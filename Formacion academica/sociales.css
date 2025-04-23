@@ -1,4 +1,4 @@
-/* Variables y Reset */
+/* ===== VARIABLES Y RESET GENERAL ===== */
 :root {
     --primary-color: #2c3e50;
     --secondary-color: #3498db;
@@ -25,7 +25,7 @@ body {
     background: url('../imgnuevas/fa_fondo.jpg') no-repeat center center fixed;
     background-size: cover;
     margin: 0;
-    padding: 10px 0; /* Espacio vertical para mostrar el fondo */
+    padding: 10px 0;
     min-height: 100vh;
 }
 
@@ -37,10 +37,14 @@ body {
     border-radius: 15px;
     overflow: hidden;
     position: relative;
-    margin: 20px auto; /* Margen superior e inferior de 20px */
+    margin: 20px auto;
 }
 
-/* Header Styles */
+.main-content{
+    padding: 2rem;
+}
+
+/* ===== ESTILOS DEL HEADER ===== */
 .page-header {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
@@ -77,9 +81,133 @@ body {
     opacity: 0.9;
 }
 
-/* Main Content Styles */
-.main-content {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== ESTILOS MEJORADOS CON TRANSICIONES FLUIDAS ===== */
+.content-article {
+    background: white;
     padding: 2rem;
+    margin: 2rem 0;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden; /* Para contener las animaciones */
+}
+
+.content-article h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.content-article p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.highlight-box {
+    background: #f8f9fa;
+    border-left: 4px solid var(--accent-color);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    transition: all 0.3s ease;
+}
+
+.highlight-box h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.extra-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+        max-height 0.4s ease,
+        opacity 0.3s ease,
+        margin 0.3s ease;
+    margin: 0;
+    will-change: max-height, opacity, margin;
+}
+
+.extra-content.expanded {
+    max-height: 1000px; /* un valor suficientemente grande */
+    opacity: 1;
+    margin: 1rem 0;
+}
+
+
+.read-more-btn.expanded .chevron-icon {
+    transform: rotate(180deg);
+}
+
+.read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.read-more-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.chevron-icon {
+    transition: transform 0.1s ease;
+}
+
+.read-more-btn.expanded .chevron-icon {
+    transform: rotate(180deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== ESTILOS DE "DÍA DISTINTO" ===== */
+.activities-section {
+    margin: 3rem 0;
 }
 
 .section-title {
@@ -100,32 +228,34 @@ body {
     margin: 0.5rem auto;
 }
 
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
 
+.activity-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    border-top: 3px solid var(--secondary-color);
+}
 
+.activity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
 
+.activity-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Slider Styles */
+/* ===== ESTILOS DE LOS SLIDERS (COMPARTIDOS) ===== */
 .slider-container {
     position: relative;
     margin: 2rem 0;
@@ -160,7 +290,6 @@ body {
     object-fit: cover;
 }
 
-/* Estilos para los botones deshabilitados */
 .slider-nav:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -221,89 +350,7 @@ body {
     transform: scale(1.2);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Content Article Styles */
-.content-article {
-    background: white;
-    padding: 2rem;
-    margin: 2rem 0;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-}
-
-.content-article h2 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-}
-
-.content-article p {
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-    line-height: 1.7;
-}
-
-.highlight-box {
-    background: #f8f9fa;
-    border-left: 4px solid var(--accent-color);
-    padding: 1.5rem;
-    margin: 2rem 0;
-    border-radius: 0 var(--border-radius) var(--border-radius) 0;
-}
-
-.highlight-box h3 {
-    color: var(--accent-color);
-    margin-bottom: 1rem;
-}
-
-/* Activities Section */
-.activities-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 2rem 0;
-}
-
-.activity-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    border-top: 3px solid var(--secondary-color);
-}
-
-.activity-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.activity-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-/* Footer Styles */
+/* ===== ESTILOS DEL FOOTER ===== */
 .page-footer {
     background: var(--primary-color);
     color: white;
@@ -347,7 +394,7 @@ body {
     margin-top: 0.5rem;
 }
 
-/* Responsive Design */
+/* ===== MEDIA QUERIES (RESPONSIVE) ===== */
 @media (max-width: 768px) {
     .header-text h1 {
         font-size: 2rem;
