@@ -104,14 +104,19 @@
                     </div>
                 </div>
         
+                <!-- Agrega este botón justo antes de los párrafos LeerMas -->
                 <div class="perfil-description-full">
                     <p>Esta especialidad prepara alumnos para desempeñarse como futuros técnicos en electrónica, capaces de aportar eficazmente a las operaciones y mantenimiento de sistemas con equipamiento electrónico (preferentemente industrial).</p>
-                    <p>En la carrera de Técnico en Electrónica, en sus primeros dos años de cursado, se realiza un recorrido por todas las especialidades del colegio. Luego a partir del tercer año de cursado hasta el séptimo los alumnos se preparan por un lado, en la especialidad Técnico en Electrónica incorporando conocimientos en neumática, electroneumática y PLC (muy utilizado en la industria). Por otro lado, adquieren capacidades de desarrollo en diversos lenguajes de programación (Assembler, C, C++), todo ello acompañado de un complejo proceso de utilización del instrumental analógico y digital para llevar a cabo proyectos electrónicos de pequeña y gran envergadura según su nivel de conocimiento.</p>
-                    <p>Por último el Técnico en Electrónica en todos los años de cursado realiza viajes de estudio (Instituto Balseiro - Bariloche), visitas a empresas (ARCOR, WEG entre otras), pasantías y presentaciones de proyectos en congresos y ferias de ciencias, participaciones en competencias de Sumo de Robots, y Desafío Eco. Todos quehaceres que dan forma al Perfil del Egresado en esta especialidad.</p>
+                    <!--<button class="leer-mas-btn mobile-only" aria-expanded="false" aria-controls="texto-oculto">Leer más</button> -->
+                    <div id="texto-oculto">
+                        <p class="LeerMas">En la carrera de Técnico en Electrónica, en sus primeros dos años de cursado, se realiza un recorrido por todas las especialidades del colegio. Luego a partir del tercer año de cursado hasta el séptimo los alumnos se preparan por un lado, en la especialidad Técnico en Electrónica incorporando conocimientos en neumática, electroneumática y PLC (muy utilizado en la industria). Por otro lado, adquieren capacidades de desarrollo en diversos lenguajes de programación (Assembler, C, C++), todo ello acompañado de un complejo proceso de utilización del instrumental analógico y digital para llevar a cabo proyectos electrónicos de pequeña y gran envergadura según su nivel de conocimiento.</p>
+                        <p class="LeerMas">Por último el Técnico en Electrónica en todos los años de cursado realiza viajes de estudio (Instituto Balseiro - Bariloche), visitas a empresas (ARCOR, WEG entre otras), pasantías y presentaciones de proyectos en congresos y ferias de ciencias, participaciones en competencias de Sumo de Robots, y Desafío Eco. Todos quehaceres que dan forma al Perfil del Egresado en esta especialidad.</p>
+                    </div>
                 </div>
             </div>
         </section>
         
+
 
 
 
@@ -217,32 +222,25 @@
                     
                     <!-- Galería de imágenes -->
                     <div class="evento-gallery">
-                        <div class="evento-slider">  <!-- Cambiado de evento-slider a evento-slider para coincidir con el JS -->
-                            <div class="evento-slide active">  <!-- Cambiado de evento-slide a evento-slide -->
+                        <div class="evento-slider">
+                            <div class="evento-slide active">
                                 <img src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/ipet-50-660x330.jpg" alt="Evento de electrónica">
-                                <div class="slide-caption">Alumnos presentando sus proyectos</div>
                             </div>
                             <div class="evento-slide">
                                 <img src="https://static.wixstatic.com/media/1484e5_da9fae3ca5414403b92d93800ad713b6~mv2_d_3072_1728_s_2.jpg/v1/fill/w_560,h_314,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/1484e5_da9fae3ca5414403b92d93800ad713b6~mv2_d_3072_1728_s_2.jpg" alt="Presentación de proyectos">
-                                <img src="https://static.wixstatic.com/media/1484e5_da9fae3ca5414403b92d93800ad713b6~mv2_d_3072_1728_s_2.jpg/v1/fill/w_560,h_314,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/1484e5_da9fae3ca5414403b92d93800ad713b6~mv2_d_3072_1728_s_2.jpg" alt="Presentación de proyectos">
-                                <img src="https://static.wixstatic.com/media/1484e5_da9fae3ca5414403b92d93800ad713b6~mv2_d_3072_1728_s_2.jpg/v1/fill/w_560,h_314,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/1484e5_da9fae3ca5414403b92d93800ad713b6~mv2_d_3072_1728_s_2.jpg" alt="Presentación de proyectos">
-
-                                <div class="slide-caption">Demostración de equipos electrónicos</div>
                             </div>
                             <div class="evento-slide">
                                 <img src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/Ipet-50-Emilio-F.-Olmos-660x330.jpg" alt="Demostraciones prácticas">
-                                <div class="slide-caption">Interacción con los visitantes</div>
                             </div>
                         </div>
                         
+                        <!-- Botones de navegación -->
+                        <button class="evento-nav evento-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                        <button class="evento-nav evento-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                        
+                        <!-- Puntos indicadores -->
                         <div class="evento-controls">
-                            <button class="evento-prev" aria-label="Anterior">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <div class="evento-dots"></div>  <!-- Cambiado de evento-dots a evento-dots -->
-                            <button class="evento-next" aria-label="Siguiente">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
+                            <div class="evento-dots"></div>
                         </div>
                     </div>
                 </div>

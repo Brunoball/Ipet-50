@@ -111,3 +111,61 @@ function initSlider(config) {
     slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
     slider.addEventListener('mouseleave', startAutoRotation);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Control del botón Leer más/menos
+document.addEventListener('DOMContentLoaded', function() {
+    const leerMasBtn = document.querySelector('.leer-mas-btn');
+    const leerMasParagraphs = document.querySelectorAll('.LeerMas');
+    
+    if (leerMasBtn && leerMasParagraphs.length > 0) {
+        leerMasBtn.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            // Alternar estado ARIA para accesibilidad
+            this.setAttribute('aria-expanded', !isExpanded);
+            
+            // Alternar texto del botón
+            this.textContent = isExpanded ? 'Leer más' : 'Leer menos';
+            
+            // Alternar clases con transición
+            leerMasParagraphs.forEach(p => {
+                if (isExpanded) {
+                    p.classList.remove('active');
+                } else {
+                    p.classList.add('active');
+                }
+            });
+            
+            // Desplazamiento suave al contenido
+            if (!isExpanded) {
+                setTimeout(() => {
+                    this.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 300);
+            }
+        });
+    }
+});
