@@ -1,74 +1,147 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Función para inicializar un slider
+    // Configuración común para todos los sliders
+    const SLIDE_INTERVAL = 5000; // 5 segundos entre transiciones
+    const TRANSITION_SPEED = 600; // 0.5 segundos de duración de transición
+    
     function initSlider(sliderContainer) {
         const slider = sliderContainer.querySelector('.slider');
-        const slides = slider.querySelector('.slides');
-        const slideItems = slider.querySelectorAll('.slide');
-        const prevBtn = slider.querySelector('.prev');
-        const nextBtn = slider.querySelector('.next');
-        const dots = slider.querySelectorAll('.dot');
+        const slides = sliderContainer.querySelector('.slides');
+        const slideItems = sliderContainer.querySelectorAll('.slide');
+        const prevBtn = sliderContainer.querySelector('.prev');
+        const nextBtn = sliderContainer.querySelector('.next');
+        const dots = sliderContainer.querySelectorAll('.dot');
         
         let currentIndex = 0;
         const totalSlides = slideItems.length;
+        let slideWidth = slider.offsetWidth;
+        let slideInterval;
         
-        // Función para actualizar la posición del slider
+        // Establecer el ancho de los slides
+        function setSlideWidth() {
+            slideWidth = slider.offsetWidth;
+            slideItems.forEach(slide => {
+                slide.style.width = `${slideWidth}px`;
+            });
+            updateSlider();
+        }
+        
+        // Actualizar la posición del slider
         function updateSlider() {
-            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            slides.style.transition = `transform ${TRANSITION_SPEED}ms ease-in-out`;
+            slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
             
             // Actualizar dots
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentIndex);
             });
-            
-            // Eliminamos la deshabilitación de botones para permitir el ciclo infinito
-            // prevBtn.disabled = false;
-            // nextBtn.disabled = false;
         }
         
-        // Event listeners para botones de navegación
-        prevBtn.addEventListener('click', () => {
+        // Ir a un slide específico
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSlider();
+            resetAutoSlide();
+        }
+        
+        // Navegación
+        function prevSlide() {
             currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
             updateSlider();
-        });
+            resetAutoSlide();
+        }
         
-        nextBtn.addEventListener('click', () => {
+        function nextSlide() {
             currentIndex = (currentIndex + 1) % totalSlides;
             updateSlider();
-        });
-        
-        // Event listeners para dots
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentIndex = index;
-                updateSlider();
-            });
-        });
-        
-        // Inicializar el slider
-        updateSlider();
+            resetAutoSlide();
+        }
         
         // Auto-avance
-        let slideInterval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % totalSlides;
-            updateSlider();
-        }, 5000);
+        function startAutoSlide() {
+            clearInterval(slideInterval); // Limpiar cualquier intervalo existente
+            slideInterval = setInterval(nextSlide, SLIDE_INTERVAL);
+        }
         
-        // Pausar auto-avance al interactuar
-        slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-        slider.addEventListener('mouseleave', () => {
-            slideInterval = setInterval(() => {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                updateSlider();
-            }, 5000);
+        function resetAutoSlide() {
+            clearInterval(slideInterval);
+            startAutoSlide();
+        }
+        
+        // Event listeners
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToSlide(index));
         });
+        
+        // Pausar al interactuar
+        slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        slider.addEventListener('mouseleave', startAutoSlide);
+        
+        // Touch events para móviles
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        slider.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            clearInterval(slideInterval);
+        });
+        
+        slider.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            startAutoSlide();
+        });
+        
+        function handleSwipe() {
+            const difference = touchStartX - touchEndX;
+            if (difference > 50) { // Deslizamiento a la izquierda
+                nextSlide();
+            } else if (difference < -50) { // Deslizamiento a la derecha
+                prevSlide();
+            }
+        }
+        
+        // Inicialización
+        setSlideWidth();
+        startAutoSlide();
+        window.addEventListener('resize', setSlideWidth);
     }
     
-    // Inicializar todos los sliders en la página
+    // Inicializar todos los sliders
     const sliderContainers = document.querySelectorAll('.slider-container');
-    sliderContainers.forEach(container => {
-        initSlider(container);
-    });
+    sliderContainers.forEach(initSlider);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
