@@ -44,31 +44,48 @@ function initSlider(config) {
     const dotsContainer = document.querySelector(config.dotsContainerSelector);
     let currentSlide = 0;
     let slideInterval;
-    
+    let isTransitioning = false;
+    let lastInteractionTime = 0;
+    const CLICK_DELAY = 800; // 600ms de delay entre interacciones
+
     // Create dots
     if (dotsContainer) {
         dotsContainer.innerHTML = '';
         slides.forEach((_, index) => {
             const dot = document.createElement('span');
-            dot.addEventListener('click', () => goToSlide(index));
+            dot.addEventListener('click', () => {
+                if (canInteract()) {
+                    goToSlide(index);
+                }
+            });
             dotsContainer.appendChild(dot);
         });
     }
     
     const dots = dotsContainer ? document.querySelectorAll(`${config.dotsContainerSelector} span`) : [];
     
+    // Verificar si se puede interactuar
+    function canInteract() {
+        const now = Date.now();
+        return !isTransitioning && (now - lastInteractionTime > CLICK_DELAY);
+    }
+
     // Initialize slider
     function setupSlider() {
         slides.forEach((slide, index) => {
             slide.style.opacity = index === 0 ? '1' : '0';
             slide.style.zIndex = index === 0 ? '1' : '0';
         });
-        
         updateDots();
     }
     
     // Go to specific slide
     function goToSlide(index) {
+        if (!canInteract()) return;
+        
+        lastInteractionTime = Date.now();
+        isTransitioning = true;
+        
         slides[currentSlide].style.opacity = '0';
         slides[currentSlide].style.zIndex = '0';
         
@@ -77,6 +94,11 @@ function initSlider(config) {
         slides[currentSlide].style.opacity = '1';
         slides[currentSlide].style.zIndex = '1';
         updateDots();
+        
+        // Resetear después de la transición
+        setTimeout(() => {
+            isTransitioning = false;
+        }, CLICK_DELAY);
     }
     
     // Update dots
@@ -88,31 +110,49 @@ function initSlider(config) {
         }
     }
     
-    // Event listeners
+    // Event listeners con delay
     if (prevBtn) {
-        prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+        prevBtn.addEventListener('click', () => {
+            if (canInteract()) {
+                goToSlide(currentSlide - 1);
+                resetInterval();
+            }
+        });
     }
     
     if (nextBtn) {
-        nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+        nextBtn.addEventListener('click', () => {
+            if (canInteract()) {
+                goToSlide(currentSlide + 1);
+                resetInterval();
+            }
+        });
+    }
+    
+    // Auto-rotate slides
+    function autoRotate() {
+        if (!isTransitioning) {
+            goToSlide(currentSlide + 1);
+        }
+    }
+    
+    function startAutoRotation() {
+        slideInterval = setInterval(autoRotate, 5000);
+    }
+    
+    function resetInterval() {
+        clearInterval(slideInterval);
+        startAutoRotation();
     }
     
     // Initialize
     setupSlider();
-    
-    // Auto-rotate slides (opcional)
-    function startAutoRotation() {
-        slideInterval = setInterval(() => goToSlide(currentSlide + 1), 5000);
-    }
-    
     startAutoRotation();
     
     // Pause on hover
     slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
     slider.addEventListener('mouseleave', startAutoRotation);
 }
-
-
 
 
 
@@ -169,35 +209,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

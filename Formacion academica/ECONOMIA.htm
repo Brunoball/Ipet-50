@@ -4,207 +4,181 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPET 50 | ECONOMÍA</title>
+    <title>IPET 50 | Economía</title>
     <link rel="shortcut icon" href="../img/efologo.png" type="image/x-icon">
-    <link rel="stylesheet" href="economia.css">
+    <link rel="stylesheet" href="FA_main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@400;600&family=Prociono&display=swap" rel="stylesheet">
     <link href="../fontawesome-free-6.5.1-web/css/all.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <img class="fondo" src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/ipet-50.jpg" alt="">
-    
-    <div class="contenedor">
-        <div class="box-menu">
-            <div class="menu">
-                <img class="escudo" src="../img/Escudo.png" alt="">
-                <h1 class="tituloprinc">Departamento de Economía</h1>
+
+    <div class="page-wrapper">
+        <header class="page-header">
+            <div class="header-content">
+                <img class="escudo" src="../img/Escudo.png" alt="Escudo IPET 50">
+                <div class="header-text">
+                    <h1>Departamento de <span>Economía</span></h1>
+                    <p>Formando profesionales con visión económica</p>
+                </div>
             </div>
-        </div>
+        </header>
 
-        <section>
-            <div class="contenedor-sobre-nosotros">
-                <div class="slider">
-                    <ul class="slides">
-                        <li class="slide"><img src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/ipet-50-660x330.jpg"></li>
-                        <li class="slide"><img src="https://static.wixstatic.com/media/1484e5_da9fae3ca5414403b92d93800ad713b6~mv2_d_3072_1728_s_2.jpg/v1/fill/w_560,h_314,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/1484e5_da9fae3ca5414403b92d93800ad713b6~mv2_d_3072_1728_s_2.jpg"></li>
-                        <li class="slide"><img src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/Ipet-50-Emilio-F.-Olmos-660x330.jpg"></li>
-                        <li class="slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQpEFF32kPg2dOEJ0I8RTl5UXcditZLSzlVS9K-DHckA&s"></li>
-                    </ul>
-                    <div class="prev" onclick="prevSlide()">&#10094;</div>
-                    <div class="next" onclick="nextSlide()">&#10095;</div>
-                    <div class="puntos-container">
-                        <span class="punto" onclick="currentSlide(1)"></span>
-                        <span class="punto" onclick="currentSlide(2)"></span>
-                        <span class="punto" onclick="currentSlide(3)"></span>
-                        <span class="punto" onclick="currentSlide(4)"></span>
+        <main class="main-content">
+            <section class="intro-section">
+                <!-- Slider principal -->
+                <div class="slider-container">
+                    <div class="slider">
+                        <div class="slides">
+                            <div class="slide active"><img src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/ipet-50-660x330.jpg" alt="Instalaciones IPET 50"></div>
+                            <div class="slide"><img src="https://static.wixstatic.com/media/1484e5_da9fae3ca5414403b92d93800ad713b6~mv2_d_3072_1728_s_2.jpg" alt="Actividades académicas"></div>
+                            <div class="slide"><img src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/Ipet-50-Emilio-F.-Olmos-660x330.jpg" alt="Estudiantes trabajando"></div>
+                            <div class="slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQpEFF32kPg2dOEJ0I8RTl5UXcditZLSzlVS9K-DHckA&s" alt="Eventos escolares"></div>
+                        </div>
+                        <button class="slider-nav prev" aria-label="Imagen anterior">&#10094;</button>
+                        <button class="slider-nav next" aria-label="Imagen siguiente">&#10095;</button>
+                        <div class="slider-dots">
+                            <span class="dot active" data-slide="0"></span>
+                            <span class="dot" data-slide="1"></span>
+                            <span class="dot" data-slide="2"></span>
+                            <span class="dot" data-slide="3"></span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="contenido-textos">
-                    <p>
-                        Entendemos que la educación humana es el principal eslabón  para convertir a niños, a jóvenes y a hombres en seres humanos razonables y reflexivos, y
-                        deduciendo que la educación es día a día y paso a paso, se lo debe definir como un ser racional que “aprendiendo” crece, se fortalece, se defiende de lo
-                        injusto porque conoció lo justo, se protege de la mentira porque descubrió que la verdad es el mejor camino para transitar, habla con conciencia y lealtad
-                        porque sabe que la apariencia y la falsedad solo sirven para lastimar y engañar (y engañarse) decide caminar con convicciones firmes y pensamientos fuertes
-                    </p>
-                </div> 
-                <div class="contenido-textos-2">
-                    <p>
-                        porque experimentó que con seguridad se marcha más cómodo.
-                        Entonces la mejor postura para caminar de la mano de la educación es valorando la educación, y como equipo de trabajo deseamos y fundamentamos nuestros proyectos
-                        y nuestra voluntad en reflejar en la mirada de nuestros alumnos la ambición por descubrir y asimilar los conocimientos que los llevaran a madurar y a entender sobre
-                        sus contenidos más los valores inminentes e indispensables para asegurar una equilibrada e imperiosa combinación que hace al ser humano más humano.
-                        Nuestros proyectos buscan que a través de la información con noticias sobre actualidad del país y del mundo, con su respectiva comprensión lectora, y a través de películas
-                        referidas al campo de nuestras materias, los alumnos adviertan y perciban la importancia de la educación a la que pueden acceder, que entiendan que los valores son tan importantes
-                        como los conocimientos;  y lograr motivarlos a que descubran que como seres humanos debemos estar en continuo aprendizaje es nuestra mayor meta.
-                    </p>
-                </div>   
+                <article class="content-article">
+                    <h2 class="article-title">Nuestro Enfoque Educativo</h2>
+                    <div class="content-toggle">
+                        <p class="article-intro">
+                            Entendemos que la educación humana es el principal eslabón para convertir a niños, a jóvenes y a hombres en seres humanos razonables y reflexivos. 
+                            La educación es día a día y paso a paso, un proceso que define al ser racional que "aprendiendo" crece, se fortalece y desarrolla valores fundamentales.
+                        </p>
+                        
+                        <div class="extra-content">
+                            <p>
+                                Como equipo de trabajo deseamos y fundamentamos nuestros proyectos en reflejar en nuestros alumnos la ambición por descubrir y asimilar los conocimientos 
+                                que los llevarán a madurar y entender tanto los contenidos como los valores indispensables para ser humanos integrales.
+                            </p>
+                            <p>
+                                Nuestros proyectos buscan que a través de la información sobre actualidad del país y del mundo, con su respectiva comprensión lectora, y mediante películas
+                                relacionadas con nuestras materias, los alumnos perciban la importancia de la educación y entiendan que los valores son tan importantes como los conocimientos.
+                            </p>
+                            <ul class="features-list">
+                                <li><span class="icon">✓</span> Enfoque en economía aplicada</li>
+                                <li><span class="icon">✓</span> Análisis de casos reales</li>
+                                <li><span class="icon">✓</span> Desarrollo de pensamiento crítico</li>
+                                <li><span class="icon">✓</span> Conexión con el mundo laboral</li>
+                            </ul>
+                        </div>
+                
+                        <button class="read-more-btn">
+                            <span class="btn-text">Leer más</span>
+                            <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                
+                    <div class="highlight-box">
+                        <div class="highlight-badge">Proyecto Destacado</div>
+                        <h3 class="highlight-title">Análisis de la película "El Patrón"</h3>
+                        <p class="highlight-text">
+                            Este proyecto utiliza la película "El Patrón" para analizar relaciones laborales, derechos del trabajador y abusos de poder en el ámbito económico. 
+                            Los estudiantes realizan un profundo análisis de los derechos vulnerados y reflexionan sobre las condiciones laborales justas.
+                        </p>
+                        <div class="highlight-footer">
+                            <span class="tag">Derechos laborales</span>
+                            <span class="tag">Economía aplicada</span>
+                            <span class="tag">Cine debate</span>
+                        </div>
+                    </div>
+                </article>
+            </section>
 
-                <div class="contenido-textos-mov">
-                    <p>
-                        Entendemos que la educación humana es el principal eslabón  para convertir a niños, a jóvenes y a hombres en seres humanos razonables y reflexivos, y
-                        deduciendo que la educación es día a día y paso a paso, se lo debe definir como un ser racional que “aprendiendo” crece, se fortalece, se defiende de lo
-                        injusto porque conoció lo justo, se protege de la mentira porque descubrió que la verdad es el mejor camino para transitar, habla con conciencia y lealtad
-                        porque sabe que la apariencia y la falsedad solo sirven para lastimar y engañar (y engañarse) decide caminar con convicciones firmes y pensamientos fuertes porque experimentó
-                        que con seguridad se marcha más cómodo.<br>
-                        Entonces la mejor postura para caminar de la mano de la educación es valorando la educación, y como equipo de trabajo deseamos y fundamentamos nuestros proyectos
-                        y nuestra voluntad en reflejar en la mirada de nuestros alumnos la ambición por descubrir y asimilar los conocimientos que los llevaran a madurar y a entender sobre
-                        sus contenidos más los valores inminentes e indispensables para asegurar una equilibrada e imperiosa combinación que hace al ser humano más humano.<br>
-                        Nuestros proyectos buscan que a través de la información con noticias sobre actualidad del país y del mundo, con su respectiva comprensión lectora, y a través de películas
-                        referidas al campo de nuestras materias, los alumnos adviertan y perciban la importancia de la educación a la que pueden acceder, que entiendan que los valores son tan importantes
-                        como los conocimientos;  y lograr motivarlos a que descubran que como seres humanos debemos estar en continuo aprendizaje es nuestra mayor meta.
-                    </p>
-                </div>   
+            <section class="activities-section">
+                <h2 class="section-title">Microevento del Departamento</h2>
+                
+                <div class="slider-container">
+                    <div class="slider">
+                        <div class="slides">
+                            <div class="slide active"><img src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/ipet-50-660x330.jpg" alt="Microevento 1"></div>
+                            <div class="slide"><img src="https://static.wixstatic.com/media/1484e5_da9fae3ca5414403b92d93800ad713b6~mv2_d_3072_1728_s_2.jpg" alt="Microevento 2"></div>
+                            <div class="slide"><img src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/Ipet-50-Emilio-F.-Olmos-660x330.jpg" alt="Microevento 3"></div>
+                            <div class="slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQpEFF32kPg2dOEJ0I8RTl5UXcditZLSzlVS9K-DHckA&s" alt="Microevento 4"></div>
+                        </div>
+                        <button class="slider-nav prev" aria-label="Imagen anterior">&#10094;</button>
+                        <button class="slider-nav next" aria-label="Imagen siguiente">&#10095;</button>
+                        <div class="slider-dots">
+                            <span class="dot active" data-slide="0"></span>
+                            <span class="dot" data-slide="1"></span>
+                            <span class="dot" data-slide="2"></span>
+                            <span class="dot" data-slide="3"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <article class="content-article">
+                    <h3 class="article-title">Actividad: "El Patrón" - Análisis de derechos laborales</h3>
+                    <div class="content-toggle">
+                        <p class="article-intro">
+                            Esta película basada en hechos reales muestra la historia de un humilde peón de campo que encuentra trabajo en una carnicería, 
+                            donde es explotado laboralmente. Utilizamos este material para reflexionar sobre derechos laborales y relaciones de poder.
+                        </p>
+                        
+                        <div class="extra-content">
+                            <p><strong>Derechos afectados que analizamos:</strong></p>
+                            <ul class="features-list">
+                                <li><span class="icon">✓</span> Derecho a un trabajo digno y condiciones laborales justas</li>
+                                <li><span class="icon">✓</span> Derecho al buen trato y respeto</li>
+                                <li><span class="icon">✓</span> Derecho a la salud física y mental</li>
+                                <li><span class="icon">✓</span> Derecho a una alimentación adecuada</li>
+                                <li><span class="icon">✓</span> Derecho a la educación y capacitación</li>
+                                <li><span class="icon">✓</span> Derecho a la igualdad y no discriminación</li>
+                                <li><span class="icon">✓</span> Derecho a la libertad y contra la esclavitud</li>
+                            </ul>
+                            
+                            <p><strong>Actividad grupal:</strong></p>
+                            <ol class="features-list" style="list-style-type: decimal; padding-left: 2rem;">
+                                <li>¿Qué condiciones inseguras identificas en el ambiente laboral mostrado?</li>
+                                <li>¿Cómo afecta la falta de orden y limpieza al trabajador y a la sociedad?</li>
+                                <li>Enumera los derechos vulnerados que identificaste en la película.</li>
+                                <li>Reflexión personal sobre lo observado.</li>
+                            </ol>
+                        </div>
+                
+                        <button class="read-more-btn">
+                            <span class="btn-text">Ver detalles completos</span>
+                            <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </article>
+            </section>
+        </main>
+
+        <footer class="page-footer">
+            <nav class="footer-nav">
+                <ul class="nav-list">
+                    <li><a href="../WEB.htm">INICIO</a></li>
+                    <li><a href="../WEB.htm#especialidades">FORMACIÓN TÉCNICA</a></li>
+                    <li><a href="../WEB.htm#formacion">FORMACIÓN ACADÉMICA</a></li>
+                    <li><a href="../WEB.htm#nosotros">INSTITUCIONAL</a></li>
+                    <li><a href="../WEB.htm#footer">CONTACTO</a></li>
+                </ul>
+            </nav>
+            
+            <div class="footer-info">
+                <p>IPET 50 "Emilio F. Olmos" - Formando profesionales desde 1950</p>
+                <p class="copyright">© 2023 Todos los derechos reservados</p>
             </div>
-        </section> 
-
-
-
-        <section>
-            <div class="contenedor-sobre-nosotros2">
-                <h2 class="titulo">MICROEVENTO DEL DEPARTAMENTO</h2>
-                <div class="slider2">
-                    <ul class="slides2">
-                        <li class="slide2"><img src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/ipet-50-660x330.jpg"></li>
-                        <li class="slide2"><img src="https://static.wixstatic.com/media/1484e5_da9fae3ca5414403b92d93800ad713b6~mv2_d_3072_1728_s_2.jpg/v1/fill/w_560,h_314,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/1484e5_da9fae3ca5414403b92d93800ad713b6~mv2_d_3072_1728_s_2.jpg"></li>
-                        <li class="slide2"><img src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/Ipet-50-Emilio-F.-Olmos-660x330.jpg"></li>
-                        <li class="slide2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQpEFF32kPg2dOEJ0I8RTl5UXcditZLSzlVS9K-DHckA&s"></li>
-                        <li class="slide2"><img src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/Ipet-50-Emilio-F.-Olmos-660x330.jpg"></li>
-                    </ul>
-                    <div class="prev" onclick="prevSlide2()">&#10094;</div>
-                    <div class="next" onclick="nextSlide2()">&#10095;</div>
-                    <div class="puntos-container2">
-                        <span class="punto2" onclick="currentSlide2(1)"></span>
-                        <span class="punto2" onclick="currentSlide2(2)"></span>
-                        <span class="punto2" onclick="currentSlide2(3)"></span>
-                        <span class="punto2" onclick="currentSlide2(4)"></span>
-                    </div>
-                </div>
-
-
-                <div class="slider4">
-                    <ul class="slides4">
-                        <li class="slide4"><img src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/ipet-50-660x330.jpg"></li>
-                        <li class="slide4"><img src="https://static.wixstatic.com/media/1484e5_da9fae3ca5414403b92d93800ad713b6~mv2_d_3072_1728_s_2.jpg/v1/fill/w_560,h_314,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/1484e5_da9fae3ca5414403b92d93800ad713b6~mv2_d_3072_1728_s_2.jpg"></li>
-                        <li class="slide4"><img src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/Ipet-50-Emilio-F.-Olmos-660x330.jpg"></li>
-                        <li class="slide4"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQpEFF32kPg2dOEJ0I8RTl5UXcditZLSzlVS9K-DHckA&s"></li>
-                        <li class="slide4"><img src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/Ipet-50-Emilio-F.-Olmos-660x330.jpg"></li>
-                    </ul>
-                    <div class="prev" onclick="prevSlide4()">&#10094;</div>
-                    <div class="next" onclick="nextSlide4()">&#10095;</div>
-                    <div class="puntos-container4">
-                        <span class="punto4" onclick="currentSlide4(1)"></span>
-                        <span class="punto4" onclick="currentSlide4(2)"></span>
-                        <span class="punto4" onclick="currentSlide4(3)"></span>
-                        <span class="punto4" onclick="currentSlide4(4)"></span>
-                        <span class="punto4" onclick="currentSlide4(5)"></span>
-                    </div>
-                </div>
-
-
-
-                <div class="contenido-textos2">
-                    <p> 
-                        <strong><u>Película para el microevento del departamento: "El Patrón"</u></strong><br>
-                        Esta película es para reflexionar sobre un hecho basado en la vida real, ocurrido en el año 1984 en la Ciudad de Buenos Aires: Un humilde peón de campo encuentra trabajo de carnicero en la gran ciudad. Su patrón es un siniestro personaje ambicioso, impune, corrupto, dueño de una cadena de carnicerías que lo obliga a vender carne en mal estado,  al tiempo que lo sumerge en una verdadera esclavitud.
-                        El espectador va viendo en la primera media hora de la película cómo el patrón lo va explotando, pero Hermógenes, el analfabeto y humilde empleado siente que está progresando, que le dieron un ascenso, casa propia, que ahora le dieron más responsabilidades y que se va ganando la confianza de su jefe. Y el espectador, que tiene otro nivel cultural que Hermógenes, ve que, en realidad, lo están explotando.
-                        Es una cruel y extrema relación de abuso de poder porque lo que pasa entre Hermógenes y su patrón es que en este vínculo, a medida que el primero cede, el patrón avanza cada vez más.<br>
-                        Esta película es para reflexionar sobre un hecho basado en la vida real, ocurrido en el año 1984 en la Ciudad de Buenos Aires: Un humilde peón de campo encuentra trabajo de carnicero en la gran ciudad. Su patrón es un siniestro personaje ambicioso, impune, corrupto, dueño de una cadena de carnicerías que lo obliga a vender carne en mal estado,  al tiempo que lo sumerge en una verdadera esclavitud.
-                        El espectador va viendo en la primera media hora de la película cómo el patrón lo va explotando, pero Hermógenes, el analfabeto y humilde empleado siente que está progresando, que le dieron un ascenso, casa propia, que ahora le dieron más responsabilidades y que se va ganando la confianza de su jefe. Y el espectador, que tiene otro nivel cultural que Hermógenes, ve que, en realidad, lo están explotando.<br>
-                        Es una cruel y extrema relación de abuso de poder porque lo que pasa entre Hermógenes y su patrón es que en este vínculo, a medida que el primero cede, el patrón avanza cada vez más.<br>
-                        Conviviendo con  situaciones extremas como la explotación,  el maltrato, el desprecio, la humillación, los insultos, la degradación, la estafa   y la inseguridad, el daño y la crueldad son cada vez más brutalmente soportadas;  hasta que un día después de muchos años,    Hermógenes, la parte débil e ignorante de la relación, desata su ira y su desesperación, provocando inevitablemente una tragedia.<br>
-                        La pregunta es ¿Hasta dónde es posible explotar a un hombre?....<br>Se ven muchos derechos gravemente afectados:<br>
-                    </p> 
-                    <ul class="lista">
-                        <li>El derecho a un trabajo digno, de condiciones dignas, de trabajar y  recibir salarios que contribuyan a un estándar adecuado de vida,  el derecho a una remuneración igualitaria, equitativa y satisfactoria en el trabajo. Toda persona tiene derecho al trabajo, a la libre elección de su trabajo, a condiciones equitativas y satisfactorias de trabajo y a la protección contra el desempleo.</li>
-                        <li>El derecho al buen trato, al respeto mutuo, a la dignidad e integridad física y psíquica.</li>
-                        <li>El derecho a la salud: “La salud es un estado de completo bienestar físico, mental y social y no solamente la ausencia de afecciones o enfermedades”.</li>
-                        <li>El derecho a la salud pública: para crecer en un ambiente seguro y saludable, para  vivir en un medio ambiente libre de contaminación.</li>
-                        <li>El derecho a una estándar alto y accesible de salud para todos.</li>
-                        <li>El derecho a una alimentación y nutrición adecuada.</li>
-                        <li>El derecho a una vivienda adecuada.</li>
-                        <li>El derecho a la educación, el derecho de todas las personas para estar libres, eliminando cualquier tipo de discriminación en todas las áreas y niveles de educación y acceso igualitario a una educación continua  y a la capacitación vocacional.</li>
-                        <li>El derecho a un nombre, a la identidad.</li>
-                        <li>El derecho a la no distinción, exclusión, restricción o preferencia por motivos de género, raza, color, origen nacional o étnico, religión, opinión política u otra, edad, o cualquier otra condición que tenga el propósito de afectar o deteriorar el goce completo de los derechos y libertades fundamentales.</li>
-                        <li>El derecho a la igualdad entre hombres y mujeres tanto en la familia como en la sociedad.</li>
-                        <li>El derecho a la libertad por sobre todas las cosas, reduciéndolo a la esclavitud.</li><br>
-                    </ul>  
-                    <p>
-                        <strong><u>Microevento del departamento, basado en la película descripta</u></strong><br>ACTIVIDAD GRUPAL:CUESTIONARIO:<br>
-                        1-¿Estaba el trabajador, en la actividad diaria dentro de la carnicería, expuesto a acciones inseguras y condiciones inseguras? Menciona alguna de ellas.<br>
-                        2-No contar con un procedimiento adecuado de orden y limpieza ¿De qué forma  puede afectar al trabajador en su vida diaria y a la sociedad en general?<br>
-                        3-Después de ver y entender  la película ya estás en condiciones de destacar los derechos que se ven afectados ante tanta explotación y maltrato, realiza un cuadro enumerando a los mismos.<br>
-                        4-Después de haber observado la película y los videos interactivos, brinda una reflexión personal con respecto a los  mismos.
-                    </p>
-                </div>
-        </section> 
-
-
-
-        <div class="footer">
-            <ul class="footer-list">
-                <li class="list"><a href="../WEB.htm">INICIO</a></li>
-                <li class="list">
-                    <a href="../WEB.htm#especialidades">FORMACIÓN TÉCNICA</a>
-                    <ul class="sublist">
-                        <li><a href="../Especialidades/ELECTRONICA.htm">Electrónica</a></li>
-                        <li><a href="../Especialidades/ELECTRICIDAD.htm">Electricidad</a></li>
-                        <li><a href="../Especialidades/MECANICA.htm">Mecánica</a></li>
-                        <li><a href="../Especialidades/AUTOMOTORES.htm">Automotores</a></li>
-                        <li><a href="../Especialidades/MMO.htm">Mmo</a></li>
-                        <li><a href="../Especialidades/IMM.htm">Imm</a></li>
-                    </ul>
-                </li>
-                <li class="list">
-                    <a href="../WEB.htm#formacion">FORMACIÓN ACADÉMICA</a>
-                    <ul class="sublist2">
-                        <li><a href="../Formacion academica/SOCIALES.htm">Dpto Sociales</a></li>
-                        <li><a href="../Formacion academica/NATURALES.htm">Dpto Naturales</a></li>
-                        <li><a href="../Formacion academica/ARTES.htm">Dpto Artística</a></li>
-                        <li><a href="../Formacion academica/MATEMATICA.htm">Dpto Matemáticas</a></li>
-                        <li><a href="../Formacion academica/TECNOLOGIA.htm">Tecnología y Dt</a></li>
-                        <li><a href="../Formacion academica/INGLES.htm">Dpto Ingles</a></li>
-                        <li><a href="../Formacion academica/LENGUA.htm">Dpto Lengua</a></li>
-                        <li><a href="../Formacion academica/EDFISICA.htm">Dpto Ed Física</a></li>
-                    </ul>
-                </li>
-                <li class="list"><a href="../WEB.htm#nosotros">INSTITUCIONAL</a></li>
-                <li class="list"><a href="../WEB.htm#footer">CONTACTO</a></li>
-            </ul>
-        </div>
-        
-        
-        
+        </footer>
     </div>
-    <script src="../scripts/sliders.js"></script>
-    <script src="../scripts/movil.js"></script>
-    <script src="../scripts/slider-web.js"></script>
-    <script src="../scripts/slider_simple.js"></script>
+
+    <script src="../scripts/form_ac_slider.js"></script>
 </body>
 </html>

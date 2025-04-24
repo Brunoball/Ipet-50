@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Configuración común para todos los sliders
-    const SLIDE_INTERVAL = 5000; // 5 segundos entre transiciones
-    const TRANSITION_SPEED = 600; // 0.5 segundos de duración de transición
+    const SLIDE_INTERVAL = 5000; // 5 segundos entre transiciones automáticas
+    const TRANSITION_SPEED = 600; // 0.6 segundos de duración de transición
+    const CLICK_DELAY = 800; // 0.8 segundos de espera entre clicks manuales
     
     function initSlider(sliderContainer) {
         const slider = sliderContainer.querySelector('.slider');
@@ -15,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const totalSlides = slideItems.length;
         let slideWidth = slider.offsetWidth;
         let slideInterval;
+        let isTransitioning = false;
+        let lastClickTime = 0;
         
         // Establecer el ancho de los slides
         function setSlideWidth() {
@@ -34,10 +37,25 @@ document.addEventListener('DOMContentLoaded', function() {
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentIndex);
             });
+            
+            // Controlar el estado de transición
+            isTransitioning = true;
+            setTimeout(() => {
+                isTransitioning = false;
+            }, TRANSITION_SPEED);
+        }
+        
+        // Verificar si se puede realizar una acción
+        function canInteract() {
+            const now = Date.now();
+            return !isTransitioning && (now - lastClickTime > CLICK_DELAY);
         }
         
         // Ir a un slide específico
         function goToSlide(index) {
+            if (!canInteract()) return;
+            
+            lastClickTime = Date.now();
             currentIndex = index;
             updateSlider();
             resetAutoSlide();
@@ -45,21 +63,32 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Navegación
         function prevSlide() {
+            if (!canInteract()) return;
+            
+            lastClickTime = Date.now();
             currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
             updateSlider();
             resetAutoSlide();
         }
         
         function nextSlide() {
+            if (!canInteract()) return;
+            
+            lastClickTime = Date.now();
             currentIndex = (currentIndex + 1) % totalSlides;
             updateSlider();
             resetAutoSlide();
         }
         
-        // Auto-avance
+        // Auto-avance (no necesita el delay)
+        function autoNextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+        }
+        
         function startAutoSlide() {
-            clearInterval(slideInterval); // Limpiar cualquier intervalo existente
-            slideInterval = setInterval(nextSlide, SLIDE_INTERVAL);
+            clearInterval(slideInterval);
+            slideInterval = setInterval(autoNextSlide, SLIDE_INTERVAL);
         }
         
         function resetAutoSlide() {
@@ -67,19 +96,23 @@ document.addEventListener('DOMContentLoaded', function() {
             startAutoSlide();
         }
         
-        // Event listeners
+        // Event listeners con protección contra clicks rápidos
         prevBtn.addEventListener('click', prevSlide);
         nextBtn.addEventListener('click', nextSlide);
         
         dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => goToSlide(index));
+            dot.addEventListener('click', () => {
+                if (canInteract() && index !== currentIndex) {
+                    goToSlide(index);
+                }
+            });
         });
         
         // Pausar al interactuar
         slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
         slider.addEventListener('mouseleave', startAutoSlide);
         
-        // Touch events para móviles
+        // Touch events para móviles con delay
         let touchStartX = 0;
         let touchEndX = 0;
         
@@ -89,12 +122,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         slider.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
+            const now = Date.now();
+            if (now - lastClickTime > CLICK_DELAY) {
+                lastClickTime = now;
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }
             startAutoSlide();
         });
         
         function handleSwipe() {
+            if (isTransitioning) return;
+            
             const difference = touchStartX - touchEndX;
             if (difference > 50) { // Deslizamiento a la izquierda
                 nextSlide();
@@ -113,7 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const sliderContainers = document.querySelectorAll('.slider-container');
     sliderContainers.forEach(initSlider);
 });
-
 
 
 
