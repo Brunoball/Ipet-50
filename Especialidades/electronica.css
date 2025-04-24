@@ -432,7 +432,7 @@ header {
 
 .perfil-gallery-container {
     flex: 0 0 40%;
-    min-width: 300px;
+    min-width: 30%;
     position: relative;
     border-radius: 8px;
     overflow: hidden;
@@ -514,7 +514,6 @@ header {
 .gallery-dots {
     display: flex;
     gap: 8px;
-    background-color: rgba(0, 0, 0, 0.3);
     padding: 5px 10px;
     border-radius: 20px;
 }
@@ -605,6 +604,80 @@ header {
     font-size: 1rem;
     color: var(--text-light);
 }
+
+
+
+
+
+
+/*boton de agregar texto */
+.extra-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+        max-height 0.4s ease,
+        opacity 0.3s ease,
+        margin 0.3s ease;
+    margin: 0;
+    will-change: max-height, opacity, margin;
+}
+
+.extra-content.expanded {
+    max-height: 1000px; /* un valor suficientemente grande */
+    opacity: 1;
+    margin: 1rem 0;
+}
+
+
+.read-more-btn.expanded .chevron-icon {
+    transform: rotate(180deg);
+}
+
+.read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.read-more-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.chevron-icon {
+    transition: transform 0.1s ease;
+}
+
+.read-more-btn.expanded .chevron-icon {
+    transform: rotate(180deg);
+}
+
+
+
+
+/*boton de agregar texto */
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -720,11 +793,7 @@ header {
     position: relative;
 }
 
-.evento-section .contenedor {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+
 
 .section-header {
     text-align: center;
@@ -765,6 +834,7 @@ header {
 .evento-proyectos-container {
     flex: 1;
     min-width: 300px;
+
 }
 
 .proyectos-card {
@@ -772,13 +842,12 @@ header {
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     height: 100%;
-    padding: 0px 30px;
+    padding: 20px 35px;
 }
 
 .evento-subtitle {
     font-size: 1.5rem;
     color: #2c3e50;
-    margin-bottom: 20px;
     position: relative;
     padding: 0px 1rem 5px 1rem;
 }
@@ -808,6 +877,7 @@ header {
     background-color: #f8f9fa;
     border-radius: 6px;
     position: relative;
+    bottom: 1rem;
     transition: all 0.3s ease;
     font-weight: 500;
 }
@@ -828,8 +898,9 @@ header {
 
 /* Galería de imágenes - Slider de microeventos */
 .evento-gallery {
+    margin: auto 0px;
     flex: 1.5;
-    min-width: 300px;
+    min-width: 30%;
     height: 350px;
     position: relative;
     border-radius: 12px;
@@ -911,7 +982,6 @@ header {
 .evento-dots {
     display: flex;
     gap: 8px;
-    background-color: rgba(0, 0, 0, 0.3);
     padding: 5px 10px;
     border-radius: 20px;
 }
@@ -934,7 +1004,7 @@ header {
 .evento-description {
     background: white;
     border-radius: 12px;
-    padding-left:40px;
+
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     margin-top: 40px;
 }
@@ -972,6 +1042,11 @@ header {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .contenedor{
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 10px;
+    }
     .evento-section {
         padding: 50px 0 30px;
     }

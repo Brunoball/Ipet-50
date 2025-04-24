@@ -169,3 +169,65 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const readMoreBtn = document.querySelector(".read-more-btn");
+    const extraContent = document.querySelector(".extra-content");
+    const btnText = document.querySelector(".btn-text");
+
+    readMoreBtn.addEventListener("click", function () {
+        const isExpanded = extraContent.classList.contains("expanded");
+
+        if (isExpanded) {
+            // Cierre: establecer altura actual, luego a 0 para que sea suave
+            extraContent.style.maxHeight = extraContent.scrollHeight + "px"; 
+            requestAnimationFrame(() => {
+                extraContent.style.maxHeight = "0px";
+                extraContent.style.opacity = "0";
+                extraContent.style.margin = "0";
+            });
+        } else {
+            // Apertura: establecer altura exacta
+            extraContent.style.maxHeight = extraContent.scrollHeight + "px";
+            extraContent.style.opacity = "1";
+            extraContent.style.margin = "1rem 0";
+        }
+
+        extraContent.classList.toggle("expanded");
+        readMoreBtn.classList.toggle("expanded");
+        btnText.textContent = isExpanded ? "Leer más" : "Leer menos";
+    });
+});
