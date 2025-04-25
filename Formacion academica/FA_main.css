@@ -60,8 +60,9 @@ body {
 }
 
 .header-text h1 span {
-    color: #e74c3c;
+    color: #b0c7e8;
 }
+
 
 .header-text p {
     font-size: 1.1rem;
@@ -313,6 +314,18 @@ body {
     box-shadow: 0 10px 20px rgba(0,0,0,0.08);
     width: 100%;
     margin: 0 auto;
+}
+
+.slider-common {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    width: 100%;
+    margin: 0 auto 2rem;
+    height: 60vh;
+    max-height: 500px;
+    min-height: 300px;
 }
 
 .slider {
