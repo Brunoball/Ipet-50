@@ -176,6 +176,12 @@ function initSlider(config) {
 
 
 
+
+
+
+
+
+
 // Control del botón Leer más/menos
 document.addEventListener('DOMContentLoaded', function() {
     const leerMasBtn = document.querySelector('.leer-mas-btn');

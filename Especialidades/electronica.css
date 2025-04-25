@@ -348,55 +348,182 @@ header {
     transition: all 0.3s ease;
 }
 
+/* Reemplaza el CSS existente del menú móvil con esto: */
+/* Estilo para el overlay del menú móvil */
+body.menu-open {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.menu-overlay {
+    position: fixed;
+
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 997;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Reemplaza solo la sección del menú móvil con esto: */
+
 @media (max-width: 992px) {
+    
+    .menu-overlay {
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 997;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Prevenir scroll cuando el menú está abierto */
+    body.menu-open {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 100vh;
+    }
+   /* Reemplaza la sección del menú móvil con esto: */
+
+
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%;
-        width: 80%;
-        max-width: 300px;
-        height: 100vh;
-        background: white;
+        right: -100%; /* Cambiado de left a right */
+        width: 100%; /* Ancho del menú desplegable */
+        max-width: 500px;
+        background-color: rgba(255, 255, 255, 0.98);
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        padding: 6rem 20px 20px;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1); /* Sombra a la izquierda */
+        z-index: 998;
+        overflow-y: auto;
+        overflow-x: hidden;
+        transform: translateX(0); /* Cambiado de translateY a translateX */
+        opacity: 1;
         transition: all 0.3s ease;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-        padding-top: 80px;
     }
-    
+        
     .nav-links.active {
-        right: 0;
+        right: 0; /* Cambiado para aparecer desde la derecha */
+        transform: translateX(0);
+        overflow-x: hidden;
     }
     
     .nav-links a {
-        margin: 15px 0;
+        margin: 10px 0;
+        padding: 12px 20px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        width: 100%;
+        text-align: left;
+    }
+    
+    .nav-links a:hover {
+        background-color: rgba(52, 152, 219, 0.1);
+    }
+    
+    .contact-btn {
+        margin: 15px 0 0 !important;
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .menu-container {
+        position: relative;
+        padding: 15px;
+        z-index: 1000;
+    }
+    
+    .logo {
+        position: relative;
+        z-index: 1001;
     }
     
     .hamburger {
         display: block;
+        position: relative;
+        z-index: 1001;
+        background: none;
+        border: none;
+    }
+
+    
+    /* Animación mejorada del hamburguesa */
+    .hamburger span {
+        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
     
     .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+        transform: translateY(8px) rotate(45deg);
     }
     
     .hamburger.active span:nth-child(2) {
         opacity: 0;
+        transform: translateX(-20px);
     }
     
     .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
+        transform: translateY(-8px) rotate(-45deg);
     }
     
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
+    /* Mejora en el overlay */
+/* Mejora en el overlay */
+body.menu-open {
+    overflow-y:scroll ;
+    overflow-x: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
 }
+
+/* Asegurar que el overlay ocupe toda la pantalla */
+.menu-overlay {
+    position: fixed;
+
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 997;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Previene el scroll del body cuando el menú está abierto */
+body.menu-open {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100vh;
+}
+}
+    
+
 
 @media (max-width: 576px) {
     .hero h1 {
@@ -1096,6 +1223,61 @@ header {
     }
 }
 
+
+
+
+
+
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #007bff; /* Azul (cambia el color si quieres) */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.back-to-top.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: #0056b3; /* Azul más oscuro */
+    transform: translateY(-3px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Footer Section */
 .footer-section {
     background-color: #333;
@@ -1239,11 +1421,32 @@ header {
     }
 }
 
-/* Botón ir arriba */
+
+/* Responsive */
+@media screen and (max-width: 992px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .perfil-content, .evento-content {
+        flex-direction: column;
+    }
+    
+    .perfil-gallery, .evento-gallery {
+        width: 100%;
+    }
+    
+    .gallery-container, .evento-slider {
+        height: 350px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+        /* Botón ir arriba */
 .back-to-top {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    left: 30px;
     width: 50px;
     height: 50px;
     background-color: var(--primary-color);
@@ -1269,27 +1472,6 @@ header {
     background-color: var(--accent-color);
     transform: translateY(-5px);
 }
-
-/* Responsive */
-@media screen and (max-width: 992px) {
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .perfil-content, .evento-content {
-        flex-direction: column;
-    }
-    
-    .perfil-gallery, .evento-gallery {
-        width: 100%;
-    }
-    
-    .gallery-container, .evento-slider {
-        height: 350px;
-    }
-}
-
-@media screen and (max-width: 768px) {
     header {
         padding: 120px 0 80px;
     }
@@ -1329,7 +1511,10 @@ header {
 }
 
 @media screen and (max-width: 576px) {
+
+
     #menu a {
+        width: 100%;
         margin: 0 8px;
         font-size: 0.9rem;
     }
@@ -1346,10 +1531,5 @@ header {
         height: 250px;
     }
     
-    .back-to-top {
-        width: 40px;
-        height: 40px;
-        bottom: 20px;
-        right: 20px;
-    }
+
 }
