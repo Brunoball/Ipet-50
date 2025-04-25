@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Configuración común para todos los sliders
     const SLIDE_INTERVAL = 5000; // 5 segundos entre transiciones automáticas
     const TRANSITION_SPEED = 600; // 0.6 segundos de duración de transición
-    const CLICK_DELAY = 800; // 0.8 segundos de espera entre clicks manuales
+    const CLICK_DELAY = 300; // Reducido a 0.3 segundos para mejor respuesta en móvil
     
     function initSlider(sliderContainer) {
         const slider = sliderContainer.querySelector('.slider');
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Ir a un slide específico
         function goToSlide(index) {
-            if (!canInteract()) return;
+            if (index === currentIndex || !canInteract()) return;
             
             lastClickTime = Date.now();
             currentIndex = index;
@@ -80,8 +80,9 @@ document.addEventListener('DOMContentLoaded', function() {
             resetAutoSlide();
         }
         
-        // Auto-avance (no necesita el delay)
+        // Auto-avance
         function autoNextSlide() {
+            if (isTransitioning) return;
             currentIndex = (currentIndex + 1) % totalSlides;
             updateSlider();
         }
@@ -96,15 +97,28 @@ document.addEventListener('DOMContentLoaded', function() {
             startAutoSlide();
         }
         
-        // Event listeners con protección contra clicks rápidos
-        prevBtn.addEventListener('click', prevSlide);
-        nextBtn.addEventListener('click', nextSlide);
-        
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                if (canInteract() && index !== currentIndex) {
-                    goToSlide(index);
+        // Event listeners mejorados para móvil
+        function handleInteraction(callback) {
+            return function(e) {
+                // Prevenir el comportamiento por defecto para eventos táctiles
+                if (e.type === 'touchstart') {
+                    e.preventDefault();
                 }
+                
+                // Detener la propagación para evitar conflictos con el slider
+                e.stopPropagation();
+                
+                callback();
+            };
+        }
+        
+        // Agregar eventos tanto para click como para touch
+        ['click', 'touchstart'].forEach(event => {
+            prevBtn.addEventListener(event, handleInteraction(prevSlide));
+            nextBtn.addEventListener(event, handleInteraction(nextSlide));
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener(event, handleInteraction(() => goToSlide(index)));
             });
         });
         
@@ -112,24 +126,20 @@ document.addEventListener('DOMContentLoaded', function() {
         slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
         slider.addEventListener('mouseleave', startAutoSlide);
         
-        // Touch events para móviles con delay
+        // Touch events para móviles mejorados
         let touchStartX = 0;
         let touchEndX = 0;
         
         slider.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
             clearInterval(slideInterval);
-        });
+        }, { passive: true });
         
         slider.addEventListener('touchend', (e) => {
-            const now = Date.now();
-            if (now - lastClickTime > CLICK_DELAY) {
-                lastClickTime = now;
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            }
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
             startAutoSlide();
-        });
+        }, { passive: true });
         
         function handleSwipe() {
             if (isTransitioning) return;
@@ -145,14 +155,21 @@ document.addEventListener('DOMContentLoaded', function() {
         // Inicialización
         setSlideWidth();
         startAutoSlide();
-        window.addEventListener('resize', setSlideWidth);
+        
+        // Optimización del resize para móvil
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                setSlideWidth();
+            }, 100);
+        });
     }
     
     // Inicializar todos los sliders
     const sliderContainers = document.querySelectorAll('.slider-container');
     sliderContainers.forEach(initSlider);
 });
-
 
 
 
