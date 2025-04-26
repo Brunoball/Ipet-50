@@ -211,11 +211,18 @@ header {
     z-index: 2;
 }
 
+/* Modificar el hero-content */
 .hero-content {
-    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrado vertical */
+    align-items: center; /* Centrado horizontal */
+    height: 100vh;
+    padding: 20px;
+    text-align: center;
     margin: 0 auto;
-    animation: fadeInUp 1s ease;
-    padding-bottom: 80px; /* Espacio para las olas */
+    max-width: 800px;
+    width: 90%;
 }
 
 .hero h1 {
@@ -268,6 +275,7 @@ header {
     line-height: 0;
     transform: rotate(180deg);
     z-index: 1;
+    height: 100px; /* Altura fija para las olas */
 }
 
 .wave-divider svg {
@@ -1129,6 +1137,9 @@ body.menu-open {
 
 /* Media Queries adicionales */
 @media (max-width: 768px) {
+    .hero-content {
+        padding-top: 0;
+    }
     .proyectos-card {
         padding: 5px;
     }
