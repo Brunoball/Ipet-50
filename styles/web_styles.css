@@ -879,15 +879,30 @@ header {
         width: 40px;
         height: 40px;
         font-size: 1rem;
+        background-color: rgba(255, 255, 255, 0.6);
+        color: #fff; /* Mantenemos rojo */
+        transition: none; /* Quitamos transición para que no haya agrandamiento */
+    }
+    
+    .slider-btn:hover {
+        background-color: rgba(255, 255, 255, 0.6); /* Sin cambio de fondo */
+        transform: none; /* No agrandar */
+        box-shadow: none; /* Sin sombra extra */
+        color: var(--primary); /* Mantenemos rojo */
     }
     
     .slider-dots {
-        bottom: 15px;
+        bottom: 20px;
     }
     
     .dot {
-        width: 10px;
-        height: 10px;
+        width: 14px;
+        height: 14px;
+    }
+    
+    .dot.active {
+        width: 14px;
+        height: 14px;
     }
 }
 
@@ -909,18 +924,33 @@ header {
     .slider-btn {
         width: 36px;
         height: 36px;
+        background-color: rgba(255, 255, 255, 0.5);
+        color: var(--primary); /* Mantenemos rojo */
+        transition: none; /* Sin animación de escala */
+    }
+    
+    .slider-btn:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+        transform: none;
+        box-shadow: none;
+        color: var(--primary);
     }
     
     .slider-dots {
-        bottom: 10px;
+        bottom: 15px;
+        gap: 8px;
     }
     
     .dot {
-        width: 8px;
-        height: 8px;
+        width: 12px;
+        height: 12px;
+    }
+    
+    .dot.active {
+        width: 12px;
+        height: 12px;
     }
 }
-
 
 
 

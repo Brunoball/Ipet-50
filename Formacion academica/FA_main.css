@@ -305,6 +305,10 @@ body {
     font-size: 1.3rem;
 }
 
+
+
+
+
 /* ===== ESTILOS DE LOS SLIDERS ===== */
 .slider-container {
     position: relative;
@@ -358,11 +362,11 @@ body {
 .slider-nav {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); /* Solo esto, sin duplicados */
     background: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    padding: 1rem;
+    padding: 0;
     cursor: pointer;
     font-size: 1.5rem;
     z-index: 10;
@@ -373,18 +377,28 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: 1;
+    margin: 0;
+}
+
+/* Posicionamiento específico para cada botón */
+.prev {
+    left: 20px; /* Flecha izquierda pegada a la izquierda */
+}
+
+.next {
+    right: 20px; /* Flecha derecha pegada a la derecha */
+}
+
+/* Elimina los pseudo-elementos innecesarios (pueden causar problemas) */
+.slider-nav::before,
+.prev::before,
+.next::before {
+    display: none; /* No los necesitamos */
 }
 
 .slider-nav:hover {
     background: rgba(0, 0, 0, 0.8);
-}
-
-.prev {
-    left: 20px;
-}
-
-.next {
-    right: 20px;
 }
 
 .slider-dots {

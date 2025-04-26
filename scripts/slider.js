@@ -6,93 +6,110 @@ document.addEventListener('DOMContentLoaded', function() {
     const dots = document.querySelectorAll('.dot');
     let currentIndex = 0;
     let touchStartX = 0;
-    let touchEndX = 0;
     let intervalId;
-    let isAnimating = false;
-    const transitionDuration = 600; // 0.6s en ms (debe coincidir con CSS)
+    let isClickable = true; // Controlador de delay entre clicks
+    const transitionSpeed = 600; // 0.6 segundos de duración de transición
+    const slideDuration = 4000; // 4 segundos fijos por imagen
+    const clickDelay = 700; // 0.5 segundos de delay entre clicks
 
-    // Función mejorada con zoom inverso y transiciones consistentes
-    function showSlide(index) {
-        if (isAnimating) return;
-        
-        isAnimating = true;
-        
-        // Manejo del índice circular
+    // Función para mostrar slide específico
+    function showSlide(index, immediate = false) {
+        // Ajustar índice si está fuera de rango
         if (index < 0) index = slides.length - 1;
         if (index >= slides.length) index = 0;
         
-        // Desactivar zoom en la imagen actual
-        slides[currentIndex].classList.remove('active');
+        // Calcular desplazamiento
+        const slideWidth = slidesContainer.offsetWidth;
+        const offset = -index * slideWidth;
         
-        // Configurar la transición
-        slidesContainer.style.transition = `transform ${transitionDuration}ms cubic-bezier(0.25, 0.1, 0.25, 1)`;
-        slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+        // Aplicar transición
+        if (immediate) {
+            slidesContainer.style.transition = 'none';
+        } else {
+            slidesContainer.style.transition = `transform ${transitionSpeed}ms ease-in-out`;
+        }
+        slidesContainer.style.transform = `translateX(${offset}px)`;
         
-        // Actualizar dots
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
-        });
+        // Actualizar indicadores
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
         
-        // Activar zoom en la nueva imagen después de un pequeño retraso
-        setTimeout(() => {
-            slides[index].classList.add('active');
-        }, 50);
+        currentIndex = index;
         
-        // Actualizar índice y resetear después de la transición
-        setTimeout(() => {
-            currentIndex = index;
-            isAnimating = false;
-        }, transitionDuration);
+        // Reiniciar el temporizador siempre que cambiamos de slide
+        resetInterval();
     }
 
-    // Navegación
-    nextBtn.addEventListener('click', () => {
-        showSlide(currentIndex + 1);
-        resetInterval();
-    });
+    // Función para manejar navegación con delay
+    function navigate(direction) {
+        if (!isClickable) return;
+        
+        isClickable = false;
+        showSlide(currentIndex + direction);
+        
+        setTimeout(() => {
+            isClickable = true;
+        }, clickDelay);
+    }
 
-    prevBtn.addEventListener('click', () => {
-        showSlide(currentIndex - 1);
-        resetInterval();
-    });
+    // Navegación con botones
+    nextBtn.addEventListener('click', () => navigate(1));
+    prevBtn.addEventListener('click', () => navigate(-1));
 
-    // Navegación por dots
-    dots.forEach((dot, i) => {
+    // Navegación con puntos (también con delay)
+    dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            if (i !== currentIndex) {
-                showSlide(i);
-                resetInterval();
-            }
+            if (!isClickable || index === currentIndex) return;
+            
+            isClickable = false;
+            showSlide(index);
+            
+            setTimeout(() => {
+                isClickable = true;
+            }, clickDelay);
         });
     });
 
-    // Touch events para móviles
+    // Touch events para móviles (sin delay)
     slidesContainer.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
+        touchStartX = e.touches[0].clientX;
+        slidesContainer.style.transition = 'none';
         clearInterval(intervalId);
     }, {passive: true});
 
-    slidesContainer.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-        setTimeout(startInterval, 3000);
+    slidesContainer.addEventListener('touchmove', (e) => {
+        if (!touchStartX) return;
+        const touchX = e.touches[0].clientX;
+        const diff = touchStartX - touchX;
+        const currentOffset = -currentIndex * slidesContainer.offsetWidth;
+        slidesContainer.style.transform = `translateX(${currentOffset - diff}px)`;
     }, {passive: true});
 
-    function handleSwipe() {
-        if (isAnimating) return;
+    slidesContainer.addEventListener('touchend', (e) => {
+        if (!touchStartX) return;
         
+        const touchEndX = e.changedTouches[0].clientX;
         const diff = touchStartX - touchEndX;
-        if (diff > 50) showSlide(currentIndex + 1); // Swipe izquierda
-        if (diff < -50) showSlide(currentIndex - 1); // Swipe derecha
-    }
+        const threshold = slidesContainer.offsetWidth / 4; // 25% del ancho
+        
+        if (diff > threshold) {
+            showSlide(currentIndex + 1); // Deslizar izquierda
+        } else if (diff < -threshold) {
+            showSlide(currentIndex - 1); // Deslizar derecha
+        } else {
+            // Si no superó el umbral, volver a la posición actual sin animación
+            showSlide(currentIndex, true);
+        }
+        
+        touchStartX = 0;
+    }, {passive: true});
 
-    // Autoplay con pausa al interactuar
+    // Autoplay con tiempo fijo
     function startInterval() {
+        clearInterval(intervalId); // Limpiar por si acaso
         intervalId = setInterval(() => {
-            if (!isAnimating) {
-                showSlide(currentIndex + 1);
-            }
-        }, 5000);
+            showSlide(currentIndex + 1);
+        }, slideDuration);
     }
 
     function resetInterval() {
@@ -100,9 +117,32 @@ document.addEventListener('DOMContentLoaded', function() {
         startInterval();
     }
 
-    // Inicialización - Mostrar primera imagen con zoom normal
-    slides[0].classList.add('active');
-    startInterval();
+    // Inicialización
+    function initSlider() {
+        // Asegurar que todos los slides tengan el ancho correcto
+        const slideWidth = slidesContainer.offsetWidth;
+        slides.forEach(slide => {
+            slide.style.width = `${slideWidth}px`;
+        });
+        
+        // Mostrar primer slide sin animación
+        showSlide(0, true);
+        
+        // Iniciar el intervalo después de que termine la transición inicial
+        setTimeout(startInterval, transitionSpeed);
+    }
+
+    // Iniciar y manejar redimensionamiento
+    initSlider();
+    
+    // Redimensionamiento con debounce para mejor performance
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            initSlider();
+        }, 200);
+    });
 
     // Pausar al interactuar
     const slider = document.querySelector('.gallery-slider');
