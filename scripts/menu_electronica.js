@@ -33,27 +33,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Desplazamiento suave para los enlaces del menú (versión mejorada con retraso)
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Solo si es un enlace interno (que comienza con #)
-            if(this.getAttribute('href').startsWith('#')) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                // Cerrar el menú usando la función común
-                closeMenu();
-                
-                // Desplazamiento suave con retraso mejorado
-                if(targetElement) {
-                    setTimeout(() => {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80, // Ajuste para el header fijo
-                            behavior: 'smooth'
-                        });
-                    }, 300);
-                }
-            }
-        });
-    });
+
 });
