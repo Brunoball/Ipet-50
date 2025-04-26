@@ -1155,6 +1155,9 @@ body.menu-open {
 
 /* Media Queries adicionales */
 @media (max-width: 768px) {
+    .contact-btn:hover{
+        background-color: #3498db !important;
+    }
 
     .back-to-top{
         right: auto;
