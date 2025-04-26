@@ -92,7 +92,6 @@ ul {
 /* Header */
 header {
     width: 100%;
-    height: 100vh;
     background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.9) 100%), 
                 url(../img/portada6.jpg);
     background-size: cover;
@@ -197,11 +196,11 @@ header {
     display: none;
 }
 
-/* Hero Section */
+/* Hero Section - Mejorado */
 .hero {
-    height: 100vh;
     flex: 1;
     display: flex;
+    height: 100vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -209,14 +208,14 @@ header {
     padding: 0 20px;
     color: #ffffff;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .hero-content {
     max-width: 800px;
     margin: 0 auto;
-    padding-top: 80px;
     animation: fadeInUp 1s ease;
+    padding-bottom: 80px; /* Espacio para las olas */
 }
 
 .hero h1 {
@@ -224,7 +223,6 @@ header {
     margin-bottom: 20px;
     font-weight: 700;
     line-height: 1.2;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .hero-subtitle {
@@ -249,6 +247,9 @@ header {
     transition: all 0.3s ease;
     text-decoration: none;
     box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+    margin-bottom: 30px; /* Espacio antes de las olas */
+    position: relative;
+    z-index: 3;
 }
 
 .cta-button:hover {
@@ -257,47 +258,16 @@ header {
     background-color: #2980b9;
 }
 
-/* Scroll Indicator */
-.scroll-indicator {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    cursor: pointer;
-}
-
-.scroll-indicator span {
-    display: block;
-    width: 30px;
-    height: 50px;
-    border: 2px solid rgba(255, 255, 255, 0.7);
-    border-radius: 15px;
-    position: relative;
-}
-
-.scroll-indicator span::before {
-    content: '';
-    position: absolute;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 6px;
-    height: 6px;
-    background: white;
-    border-radius: 50%;
-    animation: scrollDown 2s infinite;
-}
-
-/* Wave Divider */
+/* Wave Divider - Mejorado */
 .wave-divider {
     position: absolute;
-    top:0;
     bottom: 0;
     left: 0;
     width: 100%;
     overflow: hidden;
     line-height: 0;
     transform: rotate(180deg);
+    z-index: 1;
 }
 
 .wave-divider svg {
@@ -349,8 +319,7 @@ header {
     transition: all 0.3s ease;
 }
 
-/* Reemplaza el CSS existente del menú móvil con esto: */
-/* Estilo para el overlay del menú móvil */
+/* Menú móvil */
 body.menu-open {
     width: 100%;
     height: 100%;
@@ -360,7 +329,6 @@ body.menu-open {
 
 .menu-overlay {
     position: fixed;
-
     left: 0;
     width: 100%;
     height: 100%;
@@ -376,10 +344,7 @@ body.menu-open {
     visibility: visible;
 }
 
-/* Reemplaza solo la sección del menú móvil con esto: */
-
 @media (max-width: 992px) {
-    
     .menu-overlay {
         left: 0;
         width: 100%;
@@ -396,35 +361,32 @@ body.menu-open {
         visibility: visible;
     }
     
-    /* Prevenir scroll cuando el menú está abierto */
     body.menu-open {
         overflow-y: scroll;
         overflow-x: hidden;
         height: 100vh;
     }
-   /* Reemplaza la sección del menú móvil con esto: */
-
 
     .nav-links {
         position: fixed;
         top: 5.7rem;
-        right: -100%; /* Cambiado de left a right */
-        width: 100%; /* Ancho del menú desplegable */
+        right: -100%;
+        width: 100%;
         max-width: 500px;
         background-color: rgba(255, 255, 255, 0.98);
         flex-direction: column;
         padding: 2rem 20px 20px;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1); /* Sombra a la izquierda */
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
         z-index: 998;
         overflow-y: auto;
         overflow-x: hidden;
-        transform: translateX(0); /* Cambiado de translateY a translateX */
+        transform: translateX(0);
         opacity: 1;
         transition: all 0.3s ease;
     }
         
     .nav-links.active {
-        right: 0; /* Cambiado para aparecer desde la derecha */
+        right: 0;
         transform: translateX(0);
         overflow-x: hidden;
     }
@@ -468,8 +430,6 @@ body.menu-open {
         border: none;
     }
 
-    
-    /* Animación mejorada del hamburguesa */
     .hamburger span {
         transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     }
@@ -487,52 +447,60 @@ body.menu-open {
         transform: translateY(-8px) rotate(-45deg);
     }
     
-    /* Mejora en el overlay */
-/* Mejora en el overlay */
-body.menu-open {
-    overflow-y:scroll ;
-    overflow-x: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100%;
+    body.menu-open {
+        overflow-y:scroll;
+        overflow-x: hidden;
+        width: 100%;
+        height: 100%;
+    }
+
+    .menu-overlay {
+        position: fixed;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 997;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    body.menu-open {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 100vh;
+    }
 }
 
-/* Asegurar que el overlay ocupe toda la pantalla */
-.menu-overlay {
-    position: fixed;
-
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 997;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Previene el scroll del body cuando el menú está abierto */
-body.menu-open {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 100vh;
-}
-}
+@media (max-width: 768px) {
+    /* Ajustes para el hero en móvil */
+    header {
+        background-attachment: fixed;
+        height: 100vh;
+    }
+    
+    .hero {
+        padding: 100px 20px 80px;
+    }
+    
+    .wave-divider svg {
+        height: 60px;
+    }
     
 
-
-@media (max-width: 576px) {
+    
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     
     .hero-subtitle {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
     
     .cta-button {
@@ -555,12 +523,12 @@ body.menu-open {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    align-items: center; /* Cambiado de flex-start a center */
+    align-items: center;
 }
 
 .perfil-gallery-container {
     flex: 0 0 40%;
-    min-width: 30%;
+    min-width: 45%;
     position: relative;
     border-radius: 8px;
     overflow: hidden;
@@ -569,7 +537,7 @@ body.menu-open {
 
 .perfil-gallery-slider {
     width: 100%;
-    height: 350px; /* Altura fija para el slider */
+    height: 350px;
     position: relative;
     overflow: hidden;
     border-radius: 8px;
@@ -667,7 +635,7 @@ body.menu-open {
 
 .perfil-highlights {
     background-color: var(--gray-light);
-    padding: 15px 25px; /* 🔧 15px arriba y abajo, 25px a los lados */
+    padding: 15px 25px;
     border-radius: 8px;
     min-height: 350px;
     display: flex;
@@ -707,11 +675,8 @@ body.menu-open {
 }
 
 .competencies-list li:hover{
-    background-color: #e9ecef;
     transform: translateX(5px);
 }
-
-
 
 .competencies-list li i {
     position: absolute;
@@ -733,12 +698,7 @@ body.menu-open {
     color: var(--text-light);
 }
 
-
-
-
-
-
-/*boton de agregar texto */
+/* Botón leer más */
 .extra-content {
     max-height: 0;
     opacity: 0;
@@ -752,14 +712,9 @@ body.menu-open {
 }
 
 .extra-content.expanded {
-    max-height: 1000px; /* un valor suficientemente grande */
+    max-height: 1000px;
     opacity: 1;
     margin: 1rem 0;
-}
-
-
-.read-more-btn.expanded .chevron-icon {
-    transform: rotate(180deg);
 }
 
 .read-more-btn {
@@ -788,70 +743,6 @@ body.menu-open {
 
 .read-more-btn.expanded .chevron-icon {
     transform: rotate(180deg);
-}
-
-
-
-
-/*boton de agregar texto */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Media query para pantallas más pequeñas */
-@media (max-width: 768px) {
-
-
-
-    .perfil-content {
-        flex-direction: column;
-    }
-
-    .perfil-gallery-container {
-        width: 100%;
-        min-height: 300px;
-    }
-    
-    .perfil-highlights {
-        min-height: auto;
-    }
-    
-    .gallery-nav {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9rem;
-    }
 }
 
 /* Sección Nuestro Trabajo */
@@ -912,43 +803,15 @@ body.menu-open {
     line-height: 1.6;
 }
 
-/* [Todo el código CSS anterior permanece exactamente igual hasta la sección del slider de microeventos] */
-
-/* Sección Microevento - Versión Reorganizada */
+/* Sección Microevento */
 .evento-section {
     padding: 80px 0 40px;
-    background-color: #f9f9f9;
     position: relative;
 }
-
-
 
 .section-header {
     text-align: center;
     margin-bottom: 50px;
-}
-
-.section-title {
-    font-size: 2.2rem;
-    color: #2c3e50;
-    margin-bottom: 15px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.section-divider {
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, #3498db, #2c3e50);
-    margin: 0 auto 15px;
-    border-radius: 3px;
-}
-
-.section-subtitle {
-    font-size: 1.1rem;
-    color: #7f8c8d;
-    font-weight: 400;
 }
 
 .evento-content {
@@ -958,17 +821,14 @@ body.menu-open {
     margin-bottom: 40px;
 }
 
-/* Contenedor de proyectos */
 .evento-proyectos-container {
     flex: 1;
     min-width: 300px;
-
 }
 
 .proyectos-card {
-    background: white;
+    background: var(--gray-light);
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     height: 100%;
     padding: 20px 35px;
 }
@@ -1002,7 +862,6 @@ body.menu-open {
 .evento-proyectos li {
     padding: 5px 15px 5px 40px;
     color: #2c3e50;
-    background-color: #f8f9fa;
     border-radius: 6px;
     position: relative;
     bottom: 1rem;
@@ -1011,7 +870,6 @@ body.menu-open {
 }
 
 .evento-proyectos li:hover {
-    background-color: #e9ecef;
     transform: translateX(5px);
 }
 
@@ -1024,7 +882,6 @@ body.menu-open {
     font-size: 0.9rem;
 }
 
-/* Galería de imágenes - Slider de microeventos */
 .evento-gallery {
     margin: auto 0px;
     flex: 1.5;
@@ -1064,7 +921,6 @@ body.menu-open {
     object-fit: cover;
 }
 
-/* Controles del slider de microeventos */
 .evento-nav {
     position: absolute;
     top: 50%;
@@ -1128,12 +984,9 @@ body.menu-open {
     transform: scale(1.1);
 }
 
-/* Texto descriptivo abajo */
 .evento-description {
     background: white;
     border-radius: 12px;
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     margin-top: 40px;
 }
 
@@ -1168,76 +1021,15 @@ body.menu-open {
     transform: translateX(5px);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .contenedor{
-        width: 100%;
-        margin: 0 auto;
-        padding: 0 10px;
-    }
-    .evento-section {
-        padding: 50px 0 30px;
-    }
-    
-    .section-title {
-        font-size: 1.8rem;
-    }
-    
-    .evento-content {
-        flex-direction: column;
-        gap: 30px;
-        margin-bottom: 30px;
-    }
-    
-    .evento-slider {
-        height: 300px;
-    }
-    
-    .evento-description {
-        margin-top: 30px;
-    }
-}
-
-/* [Todo el resto del código CSS posterior permanece exactamente igual] */
-/* Responsive */
-@media (max-width: 768px) {
-    .evento-section {
-        padding: 50px 0 30px;
-    }
-    
-    .section-title {
-        font-size: 1.8rem;
-    }
-    
-    .evento-content {
-        flex-direction: column;
-        gap: 30px;
-        margin-bottom: 30px;
-    }
-    
-    .evento-slider {
-        height: 300px;
-    }
-    
-    .evento-description {
-        margin-top: 30px;
-    }
-}
-
-
-
-
-
-
-
+/* Botón ir arriba */
 .back-to-top {
     position: fixed;
     bottom: 30px;
     right: 30px;
     width: 50px;
     height: 50px;
-    background-color: #007bff; /* Azul (cambia el color si quieres) */
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--white);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1246,8 +1038,9 @@ body.menu-open {
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: var(--transition);
     z-index: 999;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .back-to-top.active {
@@ -1256,28 +1049,9 @@ body.menu-open {
 }
 
 .back-to-top:hover {
-    background-color: #0056b3; /* Azul más oscuro */
-    transform: translateY(-3px);
+    background-color: var(--accent-color);
+    transform: translateY(-5px);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Footer Section */
 .footer-section {
@@ -1299,59 +1073,6 @@ body.menu-open {
 
 .footer-column {
     margin-bottom: 30px;
-}
-
-.footer-logo-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.footer-logo-img {
-    width: 60px;
-    height: 60px;
-    margin-right: 15px;
-}
-
-.footer-logo-text h3 {
-    color: var(--white);
-    font-size: 1.5rem;
-    margin-bottom: 5px;
-}
-
-.footer-logo-text p {
-    color: var(--light-color);
-    font-size: 0.9rem;
-    opacity: 0.8;
-}
-
-.footer-description {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    opacity: 0.9;
-}
-
-.footer-social-links {
-    display: flex;
-    gap: 15px;
-}
-
-.footer-social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    transition: var(--transition);
-    color: var(--white);
-}
-
-.footer-social-link:hover {
-    background-color: var(--primary-color);
-    transform: translateY(-3px);
 }
 
 .footer-title {
@@ -1389,7 +1110,7 @@ body.menu-open {
     height: 200px;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: var(--shadow);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .footer-map-container iframe {
@@ -1406,121 +1127,83 @@ body.menu-open {
     opacity: 0.8;
 }
 
-/* Responsive Footer */
+/* Media Queries adicionales */
 @media (max-width: 768px) {
-    .footer-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
+    .proyectos-card {
+        padding: 5px;
     }
-    
-    .footer-column {
-        margin-bottom: 20px;
-    }
-    
-    .footer-map-container {
-        height: 250px;
-    }
-}
 
-
-/* Responsive */
-@media screen and (max-width: 992px) {
-    .section-title {
-        font-size: 2rem;
+    .evento-proyectos li {
+        padding: 10px 5px 10px 40px;
     }
     
-    .perfil-content, .evento-content {
-        flex-direction: column;
-    }
-    
-    .perfil-gallery, .evento-gallery {
+    .contenedor {
         width: 100%;
-    }
-    
-    .gallery-container, .evento-slider {
-        height: 350px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-        /* Botón ir arriba */
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    width: 50px;
-    height: 50px;
-    background-color: var(--primary-color);
-    color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
-    z-index: 999;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-.back-to-top.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.back-to-top:hover {
-    background-color: var(--accent-color);
-    transform: translateY(-5px);
-}
-    header {
-        padding: 120px 0 80px;
-    }
-    
-    .textos-header h1 {
-        font-size: 2.5rem;
+        margin: 0 auto;
+        padding: 0 2.5rem;
     }
     
     .section-title {
         font-size: 1.8rem;
     }
     
-    .trabajo-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-    
-    .footer-container {
+    .evento-content {
         flex-direction: column;
         gap: 30px;
+        margin-bottom: 30px;
     }
     
-    .footer-col {
-        width: 100%;
+    .evento-description {
+        margin-top: 30px;
     }
     
-    .wave {
-        display: none;
-    }
-    
-    .wave-cel {
-        display: block;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 70px;
+    .evento-section {
+        padding: 50px 0 30px;
     }
 }
 
-@media screen and (max-width: 576px) {
+@media (max-width: 992px) {
+    .perfil-gallery-slider {
+        height: 250px;
+    }
+    
+    .perfil-gallery-container {
+        width: 100%;
+        height: 250px;
+    }
 
+    #PDE {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .perfil-content, .evento-content {
+        flex-direction: column-reverse;
+        display: flex;
+    }
+    
+    .perfil-gallery, .evento-gallery {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .evento-slider {
+        height: 250px;
+    }
+}
 
+@media (max-width: 576px) {
     #menu a {
         width: 100%;
         margin: 0 8px;
         font-size: 0.9rem;
     }
     
-    .textos-header h1 {
+    .hero h1 {
         font-size: 2rem;
     }
     
@@ -1531,6 +1214,4 @@ body.menu-open {
     .gallery-container, .evento-slider {
         height: 250px;
     }
-    
-
 }
