@@ -759,47 +759,49 @@ header {
 
 
 
-
-/* Gallery Slider - Versión HÍBRIDA (Web vertical + Móvil adaptable) */
+/* Gallery Slider - Versión Mejorada con Responsive Avanzado */
 .gallery-slider {
     position: relative;
     width: 100%;
     max-width: 1200px;
-    margin: 40px auto;
-    border-radius: 16px;
+    margin: 2rem auto;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    border: 1px solid black;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* ESTILOS PARA WEB (vertical) */
+/* Contenedor de slides */
 .gallery-slides {
     display: flex;
-    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
-    height: 450px; /* Alto fijo para web */
+    transition: transform 0.5s ease-in-out;
+    height: 70vh; /* Altura relativa al viewport */
+    max-height: 500px; /* Límite máximo */
+    min-height: 250px; /* Límite mínimo */
 }
 
+/* Slide individual */
 .gallery-slide {
     min-width: 100%;
+    height: 100%;
+    flex-shrink: 0;
     position: relative;
 }
 
-.gallery-slide img {
+.gallery-slides img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Forzamos el recorte para evitar espacios */
-    object-position: center;
-    display: block;
+    object-fit: cover; /* Ajusta la imagen llenando el contenedor sin deformarse */
 }
 
-/* NAVEGACIÓN (Web) */
+
+/* Controles de navegación */
 .slider-nav {
     position: absolute;
     top: 50%;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 1rem;
     transform: translateY(-50%);
     z-index: 10;
 }
@@ -808,82 +810,75 @@ header {
     background-color: rgba(255, 255, 255, 0.9);
     color: var(--primary);
     border: none;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
-    border: 2px solid rgba(200, 16, 46, 0.2);
+    border: 1px solid rgba(200, 16, 46, 0.1);
 }
 
 .slider-btn:hover {
     background-color: var(--primary);
     color: white;
     transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(200, 16, 46, 0.3);
+    box-shadow: 0 4px 12px rgba(200, 16, 46, 0.2);
 }
 
-/* Puntos indicadores */
+/* Indicadores de puntos */
 .slider-dots {
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
     left: 0;
     right: 0;
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     z-index: 10;
 }
 
 .dot {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid white;
 }
 
 .dot.active {
     background-color: var(--primary);
-    transform: scale(1.3);
-    border-color: var(--primary-dark);
+    transform: scale(1.2);
 }
 
-/* ------------------------- */
-/* RESPONSIVE PARA MÓVIL */
-@media (max-width: 768px) {
+/* ===== MEDIA QUERIES ===== */
+@media (max-width: 1024px) {
     .gallery-slider {
-        margin: 20px auto;
-        border-radius: 12px;
+        border-radius: 10px;
     }
     
     .gallery-slides {
-        height: 70vh; /* Altura flexible basada en viewport */
-        min-height: 300px; /* Altura mínima */
-        max-height: 500px; /* Altura máxima */
+        height: 45vh;
     }
-    
-    .gallery-slide img {
-        object-fit: cover; /* Mantenemos cover para evitar espacios */
-    }
-    
-    .slider-nav {
-        padding: 0 10px;
+}
+
+@media (max-width: 768px) {
+    .gallery-slides {
+        height: 40vh;
+        min-height: 200px;
     }
     
     .slider-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
     
     .slider-dots {
@@ -897,9 +892,18 @@ header {
 }
 
 @media (max-width: 480px) {
+    .gallery-slider {
+        margin: 1rem auto;
+        border-radius: 8px;
+    }
+    
     .gallery-slides {
-        height: 60vh; /* Más vertical en móviles pequeños */
-        min-height: 250px;
+        height: 35vh;
+        min-height: 180px;
+    }
+    
+    .slider-nav {
+        padding: 0 0.5rem;
     }
     
     .slider-btn {
@@ -916,7 +920,6 @@ header {
         height: 8px;
     }
 }
-
 
 
 

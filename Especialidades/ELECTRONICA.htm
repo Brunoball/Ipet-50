@@ -9,18 +9,17 @@
     <link rel="stylesheet" href="electronica.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="../fontawesome-free-6.5.1-web/css/all.css" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
         <nav id="menu">
             <div class="menu-container">
-
                 <div class="logo-container">
                     <a href="../WEB.htm" class="logo">ELECTRÓNICA</a>
                 </div>
@@ -32,14 +31,13 @@
                 </button>
                 
                 <div class="nav-links" id="navMenu">
-                    <a href="#perfil-egresado">PERFIL DEL EGRESADO</a>
-                    <a href="#nuestro-trabajo">NUESTRO TRABAJO</a>
-                    <a href="#microevento">EVENTOS</a>
+                    <a href="#perfil-egresado" class="nav-link">PERFIL DEL EGRESADO</a>
+                    <a href="#nuestro-trabajo" class="nav-link">NUESTRO TRABAJO</a>
+                    <a href="#microevento" class="nav-link">EVENTOS</a>
                     <a href="#footer" class="contact-btn">CONTACTO</a>
                 </div>
             </div>
         </nav>
-        
         
         <section class="hero">
             <div class="hero-content">
@@ -86,9 +84,8 @@
                                 <img src="../imgnuevas/electronica6.jpeg" alt="Taller de electrónica">
                             </div>
                         </div>
-                        <!-- Flechas de navegación agregadas -->
-                        <button class="gallery-nav gallery-prev"><i class="fas fa-chevron-left"></i></button>
-                        <button class="gallery-nav gallery-next"><i class="fas fa-chevron-right"></i></button>
+                        <button class="gallery-nav gallery-prev" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+                        <button class="gallery-nav gallery-next" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
                         <div class="gallery-controls">
                             <div class="gallery-dots"></div>
                         </div>
@@ -111,13 +108,11 @@
                     </div>
                 </div>
         
-                <!-- Agrega este botón justo antes de los párrafos LeerMas -->
                 <div class="perfil-description-full">
                     <p>Esta especialidad prepara alumnos para desempeñarse como futuros técnicos en electrónica, capaces de aportar eficazmente a las operaciones y mantenimiento de sistemas con equipamiento electrónico (preferentemente industrial).En la carrera de Técnico en Electrónica, en sus primeros dos años de cursado, se realiza un recorrido por todas las especialidades del colegio. Luego a partir del tercer año de cursado hasta el séptimo los alumnos se preparan por un lado, en la especialidad Técnico en Electrónica incorporando conocimientos en neumática, electroneumática y PLC (muy utilizado en la industria).</p>
-                    <!--<button class="leer-mas-btn mobile-only" aria-expanded="false" aria-controls="texto-oculto">Leer más</button> -->
+                    
                     <div class="extra-content">
-                        <p> Por otro lado, adquieren capacidades de desarrollo en diversos lenguajes de programación (Assembler, C, C++), todo ello acompañado de un complejo proceso de utilización del instrumental analógico y digital para llevar a cabo proyectos electrónicos de pequeña y gran envergadura según su nivel de conocimiento.
-                    Por último el Técnico en Electrónica en todos los años de cursado realiza viajes de estudio (Instituto Balseiro - Bariloche), visitas a empresas (ARCOR, WEG entre otras), pasantías y presentaciones de proyectos en congresos y ferias de ciencias, participaciones en competencias de Sumo de Robots, y Desafío Eco. Todos quehaceres que dan forma al Perfil del Egresado en esta especialidad.</p>
+                        <p>Por otro lado, adquieren capacidades de desarrollo en diversos lenguajes de programación (Assembler, C, C++), todo ello acompañado de un complejo proceso de utilización del instrumental analógico y digital para llevar a cabo proyectos electrónicos de pequeña y gran envergadura según su nivel de conocimiento. Por último el Técnico en Electrónica en todos los años de cursado realiza viajes de estudio (Instituto Balseiro - Bariloche), visitas a empresas (ARCOR, WEG entre otras), pasantías y presentaciones de proyectos en congresos y ferias de ciencias, participaciones en competencias de Sumo de Robots, y Desafío Eco. Todos quehaceres que dan forma al Perfil del Egresado en esta especialidad.</p>
                     </div>
             
                     <button class="read-more-btn">
@@ -129,19 +124,6 @@
                 </div>
             </div>
         </section>
-        
-
-
-
-
-
-
-
-
-
-
-
-
 
         <section id="nuestro-trabajo" class="trabajo-section">
             <div class="contenedor">
@@ -217,7 +199,6 @@
                 </div>
                 
                 <div class="evento-content">
-                    <!-- Contenedor izquierdo con proyectos destacados -->
                     <div class="evento-proyectos-container">
                         <div class="proyectos-card">
                             <h3 class="evento-subtitle">Proyectos Destacados</h3>
@@ -234,7 +215,6 @@
                         </div>
                     </div>
                     
-                    <!-- Galería de imágenes -->
                     <div class="evento-gallery">
                         <div class="evento-slider">
                             <div class="evento-slide active">
@@ -248,40 +228,24 @@
                             </div>
                         </div>
                         
-                        <!-- Botones de navegación -->
-                        <button class="evento-nav evento-prev" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
-                        <button class="evento-nav evento-next" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                        <button class="evento-nav evento-prev" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+                        <button class="evento-nav evento-next" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
                         
-                        <!-- Puntos indicadores -->
                         <div class="evento-controls">
                             <div class="evento-dots"></div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Texto descriptivo abajo -->
                 <div class="evento-description">
-                    <p>Para este evento, se realizó una exposición de diversos trabajos prácticos y proyectos desarrollados por los estudiantes de nuestra institución. Los proyectos mostraron un alto nivel de innovación y aplicación práctica de los conocimientos técnicos adquiridos.
-                    La exposición fue visitada por los alumnos de 2do y 3er año, quienes pudieron interactuar con los creadores de los proyectos y comprender el potencial de la especialidad. Los visitantes mostraron gran interés en las soluciones tecnológicas presentadas, especialmente en los sistemas de automatización y control.
-                    Este tipo de eventos fortalece la integración entre los diferentes cursos y promueve el intercambio de conocimientos entre estudiantes, fomentando la creatividad y el espíritu innovador que caracteriza a nuestra institución.</p>
+                    <p>Para este evento, se realizó una exposición de diversos trabajos prácticos y proyectos desarrollados por los estudiantes de nuestra institución. Los proyectos mostraron un alto nivel de innovación y aplicación práctica de los conocimientos técnicos adquiridos. La exposición fue visitada por los alumnos de 2do y 3er año, quienes pudieron interactuar con los creadores de los proyectos y comprender el potencial de la especialidad. Los visitantes mostraron gran interés en las soluciones tecnológicas presentadas, especialmente en los sistemas de automatización y control.</p>
+                    <p>Este tipo de eventos fortalece la integración entre los diferentes cursos y promueve el intercambio de conocimientos entre estudiantes, fomentando la creatividad y el espíritu innovador que caracteriza a nuestra institución.</p>
                     
                     <a href="galeria.html" class="evento-link">Ver galería completa <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
     </main>
-
-
-
-
-
-
-
-
-
-
-
-
 
     <footer id="footer" class="footer-section">
         <div class="footer-container">
@@ -315,7 +279,6 @@
                 </div>
             </div>
             
-            
             <div class="footer-column">
                 <h3 class="footer-title">Visítenos</h3>
                 <div class="footer-map-container">
@@ -329,17 +292,11 @@
         </div>
     </footer>
 
-
-
-
-
-
     <!-- Back to top button -->
     <div class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
-    <script src="../scripts/boton_arriba.js"></script>
+    
     <script src="../scripts/electronica.js"></script>
-    <script src="../scripts/menu_electronica.js"></script>
 </body>
 </html>
