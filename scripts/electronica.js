@@ -252,30 +252,85 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Slider de testimonios
 document.addEventListener('DOMContentLoaded', function() {
-    const testimonials = document.querySelectorAll('.testimonial');
-    const prevBtn = document.querySelector('.testimonial-prev');
-    const nextBtn = document.querySelector('.testimonial-next');
+    const track = document.querySelector('.testimonios-track');
+    const cards = document.querySelectorAll('.testimonio-card');
+    const prevBtn = document.querySelector('.slider-prev');
+    const nextBtn = document.querySelector('.slider-next');
+    const dots = document.querySelectorAll('.dot');
     let currentIndex = 0;
+    let autoSlideInterval;
 
-    function showTestimonial(index) {
-        testimonials.forEach(testimonial => testimonial.classList.remove('active'));
-        testimonials[index].classList.add('active');
+    // Actualizar posición del slider
+    function updateSlider() {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        // Actualizar dots
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentIndex].classList.add('active');
     }
 
-    function nextTestimonial() {
-        currentIndex = (currentIndex + 1) % testimonials.length;
-        showTestimonial(currentIndex);
+    // Ir al slide específico
+    function goToSlide(index) {
+        currentIndex = index;
+        updateSlider();
+        resetAutoSlide();
     }
 
-    function prevTestimonial() {
-        currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
-        showTestimonial(currentIndex);
+    // Siguiente slide
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % cards.length;
+        updateSlider();
+    }
+
+    // Anterior slide
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+        updateSlider();
+    }
+
+    // Auto slide
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
     }
 
     // Event listeners
-    nextBtn.addEventListener('click', nextTestimonial);
-    prevBtn.addEventListener('click', prevTestimonial);
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoSlide();
+    });
 
-    // Auto-rotate (opcional)
-    // setInterval(nextTestimonial, 5000);
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoSlide();
+    });
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+            const index = parseInt(this.getAttribute('data-index'));
+            goToSlide(index);
+        });
+    });
+
+    // Navegación por teclado
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight') {
+            nextSlide();
+            resetAutoSlide();
+        } else if (e.key === 'ArrowLeft') {
+            prevSlide();
+            resetAutoSlide();
+        }
+    });
+
+    // Iniciar auto slide
+    startAutoSlide();
+
+    // Pausar al interactuar
+    track.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+    track.addEventListener('mouseleave', startAutoSlide);
 });

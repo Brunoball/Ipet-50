@@ -1064,96 +1064,124 @@ body.menu-open {
 }
 
 /*testimonios section*/
-/* Sección Testimonios */
-.testimonials-section {
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    padding: 80px 0;
-    color: white;
+
+
+
+
+.testimonios-section {
+    padding: 80px 20px;
+    width: 100%;
+    position: relative;
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.9) 100%), 
+    url(/imgnuevas/escuela3.jpg);
+
+    background-size: cover; /* para que cubra toda la pantalla */
+    background-position: center; /* para centrarla */
+    background-repeat: no-repeat; /* para que no se repita */
+    background-attachment: fixed;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title-testimonios {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title-testimonios:after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    color: #ffffff;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.testimonios-slider {
+    position: relative;
+    overflow: hidden;
+    padding: 0 60px;
+}
+
+.testimonios-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.testimonio-card {
+    min-width: 100%;
+    padding: 0 15px;
+    transition: all 0.3s ease;
+}
+
+.testimonio-content {
+    display: flex;
+    flex-direction: row-reverse;
+    border-radius: 13px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+    height: 100%;
     position: relative;
     overflow: hidden;
 }
 
-.testimonials-section::before {
-    content: '';
+.testimonio-year {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('../img/dot-pattern.png') center/cover;
-    opacity: 0.1;
-    z-index: 0;
+    z-index: 9999999;
+    outline: 2px solid #3498db;
+    top: 20px;
+    right: 20px;
+    background-color: var(--light-color);
+    color: var(--secondary-color);
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
 }
 
-.testimonials-section .section-title {
-    color: white;
-}
-
-.testimonials-slider {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 50px;
-}
-
-.testimonial {
-    display: none;
-    animation: fadeIn 0.5s ease;
-}
-
-.testimonial.active {
-    display: block;
-}
-
-.testimonial-content {
-    background-color: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 30px;
-    position: relative;
-    z-index: 1;
-    border: 1px solid rgba(255,255,255,0.2);
-}
-
-.testimonial-text {
+.testimonio-text {
+    height: auto;
+    background-color: #fff;
+    border-radius: 12px;
     font-size: 1.1rem;
     line-height: 1.8;
-    margin-bottom: 25px;
-    font-style: italic;
+    color: var(--text-color);
     position: relative;
+    margin: auto;
+    padding: 20px;
+    border-left: 3px solid var(--secondary-color);
 }
 
-.testimonial-text::before,
-.testimonial-text::after {
-    content: '"';
-    font-size: 3rem;
-    color: rgba(255,255,255,0.3);
-    position: absolute;
-    font-family: serif;
-}
-
-.testimonial-text::before {
-    top: -20px;
-    left: -15px;
-}
-
-.testimonial-text::after {
-    bottom: -40px;
-    right: -15px;
-}
-
-.testimonial-author {
+.testimonio-author {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 15px;
+    width: 80%;
 }
 
 .author-avatar {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid rgba(255,255,255,0.3);
+    border: 3px solid var(--light-color);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .author-avatar img {
@@ -1163,51 +1191,93 @@ body.menu-open {
 }
 
 .author-info h4 {
-    font-size: 1.2rem;
-    color: white;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-size: 1.5rem;
     margin-bottom: 5px;
 }
 
 .author-info p {
-    font-size: 0.9rem;
-    opacity: 0.8;
+    color: #add8e6;
+    font-size: 1rem;
 }
 
-.testimonial-nav {
+.slider-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(255,255,255,0.2);
-    color: white;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
+    background-color: white;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border: none;
-    font-size: 1rem;
-    z-index: 2;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    z-index: 10;
 }
 
-.testimonial-nav:hover {
-    background-color: rgba(255,255,255,0.3);
+.slider-nav:hover {
+    background-color: var(--secondary-color);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
 }
 
-.testimonial-prev {
+.slider-prev {
     left: 0;
 }
 
-.testimonial-next {
+.slider-next {
     right: 0;
 }
 
-/* Animación para el fadeIn */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ddd;
+    margin: 0 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--secondary-color);
+    transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+    .testimonios-section {
+        padding: 50px 15px;
+    }
+
+    .section-title-testimonios {
+        font-size: 2rem;
+    }
+
+    .testimonios-slider {
+        padding: 0 40px;
+    }
+
+    .testimonio-content {
+        padding: 30px 20px;
+    }
+
+    .slider-nav {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 
