@@ -248,3 +248,34 @@ document.addEventListener("DOMContentLoaded", function () {
         btnText.textContent = isExpanded ? "Leer más" : "Leer menos";
     });
 });
+
+
+// Slider de testimonios
+document.addEventListener('DOMContentLoaded', function() {
+    const testimonials = document.querySelectorAll('.testimonial');
+    const prevBtn = document.querySelector('.testimonial-prev');
+    const nextBtn = document.querySelector('.testimonial-next');
+    let currentIndex = 0;
+
+    function showTestimonial(index) {
+        testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+        testimonials[index].classList.add('active');
+    }
+
+    function nextTestimonial() {
+        currentIndex = (currentIndex + 1) % testimonials.length;
+        showTestimonial(currentIndex);
+    }
+
+    function prevTestimonial() {
+        currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+        showTestimonial(currentIndex);
+    }
+
+    // Event listeners
+    nextBtn.addEventListener('click', nextTestimonial);
+    prevBtn.addEventListener('click', prevTestimonial);
+
+    // Auto-rotate (opcional)
+    // setInterval(nextTestimonial, 5000);
+});

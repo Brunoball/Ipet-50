@@ -269,7 +269,7 @@ header {
 /* Wave Divider - Mejorado */
 .wave-divider {
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -487,16 +487,19 @@ body.menu-open {
 
 @media (max-width: 768px) {
     /* Ajustes para el hero en móvil */
+
+    
     header {
         background-attachment: fixed;
         height: 100vh;
     }
     
     .hero {
-        padding: 100px 20px 80px;
+        padding:0;
     }
     
     .wave-divider svg {
+        display: none;
         height: 60px;
     }
     
@@ -1060,6 +1063,153 @@ body.menu-open {
     transform: translateY(-3px);
 }
 
+/*testimonios section*/
+/* Sección Testimonios */
+.testimonials-section {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    padding: 80px 0;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../img/dot-pattern.png') center/cover;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.testimonials-section .section-title {
+    color: white;
+}
+
+.testimonials-slider {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+.testimonial {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.testimonial.active {
+    display: block;
+}
+
+.testimonial-content {
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    font-style: italic;
+    position: relative;
+}
+
+.testimonial-text::before,
+.testimonial-text::after {
+    content: '"';
+    font-size: 3rem;
+    color: rgba(255,255,255,0.3);
+    position: absolute;
+    font-family: serif;
+}
+
+.testimonial-text::before {
+    top: -20px;
+    left: -15px;
+}
+
+.testimonial-text::after {
+    bottom: -40px;
+    right: -15px;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.author-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255,255,255,0.3);
+}
+
+.author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-info h4 {
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.author-info p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.testimonial-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 1rem;
+    z-index: 2;
+}
+
+.testimonial-nav:hover {
+    background-color: rgba(255,255,255,0.3);
+}
+
+.testimonial-prev {
+    left: 0;
+}
+
+.testimonial-next {
+    right: 0;
+}
+
+/* Animación para el fadeIn */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 
 /* Footer Section */
 .footer-section {
@@ -1155,6 +1305,31 @@ body.menu-open {
 
 /* Media Queries adicionales */
 @media (max-width: 768px) {
+    header{
+        width: 100%;
+        background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.9) 100%), 
+                    url(../img/portada6.jpg);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: block;
+        flex-direction: initial;
+        overflow: visible;
+        position: static;
+    
+    }
+    #perfil-egresado{
+        scroll-margin-top:5rem ;
+    }
+    #nuestro-trabajo{
+        scroll-margin-top:5rem ;
+    }
+    #microevento{
+        scroll-margin-top:5rem ;
+    }
+    #footer{
+        scroll-margin-top:5rem ;
+    }
     .contact-btn:hover{
         background-color: #3498db !important;
     }
@@ -1164,7 +1339,8 @@ body.menu-open {
         left: 30px;
     }
     .hero-content {
-        padding-top: 0;
+        width: 100%;
+        padding: 10px 0 0 0;
     }
     .proyectos-card {
         padding: 5px;
