@@ -168,29 +168,39 @@ document.addEventListener('DOMContentLoaded', function() {
 // Script para el efecto de conteo
 document.addEventListener('DOMContentLoaded', function() {
     const statNumbers = document.querySelectorAll('.stat-number');
-    const speed = 2000; // Duración total de la animación en ms
-    
+    const speed = 1500; // Duración total de la animación en ms
+
     function animateValue(element, start, end, duration) {
         let startTimestamp = null;
         const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
             const value = Math.floor(progress * (end - start) + start);
-            element.textContent = value.toLocaleString();
+
+            // Si el elemento tiene clase "plus", actualizar solo el <span class="number">
+            if (element.classList.contains('plus')) {
+                const numberElement = element.querySelector('.number');
+                if (numberElement) {
+                    numberElement.textContent = value.toLocaleString();
+                }
+            } else {
+                element.textContent = value.toLocaleString();
+            }
+
             if (progress < 1) {
                 window.requestAnimationFrame(step);
             }
         };
         window.requestAnimationFrame(step);
     }
-    
+
     function startCounting() {
         statNumbers.forEach(stat => {
             const target = parseInt(stat.getAttribute('data-count'));
             animateValue(stat, 0, target, speed);
         });
     }
-    
+
     // Activar el conteo cuando la sección sea visible
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -200,6 +210,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }, { threshold: 0.5 });
-    
-    observer.observe(document.querySelector('.stats-section'));
+
+    const statsSection = document.querySelector('.stats-section');
+    if (statsSection) {
+        observer.observe(statsSection);
+    }
 });

@@ -1257,68 +1257,113 @@ footer {
 
 
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Stats Section Styles - Versión Minimalista */
 .stats-section {
-    padding: 60px 20px;
-    background-color: #f9f9f9;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-gray);
+    padding: 60px 0;
+    position: relative;
 }
 
 .stats-container {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
-    flex-wrap: wrap;
-    gap: 20px;
 }
 
 .stat-item {
-    flex: 1 1 200px;
-    min-width: 200px;
-    padding: 30px 15px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    padding: 20px 15px;
+    margin: 10px;
+    flex: 1;
+    min-width: 180px;
     transition: all 0.3s ease;
-}
-
-.stat-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(233, 30, 30, 0.1);
 }
 
 .stat-icon {
     width: 50px;
     height: 50px;
     margin: 0 auto 15px;
-    color: #e53935;
-}
-
-.stat-icon svg {
-    width: 100%;
-    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e30613;
+    font-size: 24px;
+    transition: transform 0.3s ease;
 }
 
 .stat-number {
-    font-size: 2.5em;
+    font-size: 2.5rem;
     font-weight: 700;
-    color: #e53935;
+    color: #e30613;
     margin-bottom: 5px;
-    font-feature-settings: "tnum";
-    font-variant-numeric: tabular-nums;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1;
 }
 
 .stat-label {
-    font-size: 1.1em;
+    font-size: 0.9rem;
     color: #555;
     font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Efectos hover sutiles */
+.stat-item:hover .stat-icon {
+    transform: scale(1.1);
+}
+
+.stat-item:hover .stat-number {
+    color: #c00511;
+}
+
+/* Ajuste para el ícono de + */
+.plus-icon {
+    font-size: 1.5rem;
+    color: #e30613;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Alinear ícono + número en la misma línea */
+.stat-number.plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 
 
-
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .stats-container {
         flex-direction: column;
@@ -1326,7 +1371,28 @@ footer {
     }
     
     .stat-item {
-        width: 80%;
-        max-width: 250px;
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 30px;
+    }
+    
+    .stat-number {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.85rem;
+    }
+    
+    .stat-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
     }
 }
