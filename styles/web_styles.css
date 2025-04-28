@@ -147,8 +147,6 @@ img {
 
 
 
-
-
 /* Header - Versión Mejorada */
 header {
     background-color: white;
@@ -241,7 +239,8 @@ header {
 .submenu {
     position: absolute;
     top: 100%;
-    left: 0;
+    left: auto;
+    right: 0;
     background-color: white;
     width: 220px;
     border-radius: 8px;
@@ -267,6 +266,22 @@ header {
     
     .nav-menu li:hover .dropdown-icon {
         transform: rotate(180deg);
+    }
+    
+    /* Ajuste para que el submenú no se corte */
+    .dropdown-container {
+        position: static;
+    }
+    
+    .submenu {
+        left: auto;
+        right: 0;
+    }
+    
+    /* Cuando no hay espacio a la derecha, el submenú se abre a la izquierda */
+    .nav-menu > ul > li:last-child .submenu {
+        left: 0;
+        right: auto;
     }
 }
 
@@ -380,7 +395,6 @@ header {
         pointer-events: none;
     }
     
-    
     .nav-menu.open {
         clip-path: circle(1500px at 90% -10%);
         -webkit-clip-path: circle(1500px at 90% -10%);
@@ -423,6 +437,7 @@ header {
         overflow: hidden;
         opacity: 0;
         visibility: visible;
+        transition: max-height 0.3s ease, opacity 0.2s ease;
     }
     
     .submenu.open {
@@ -442,7 +457,21 @@ header {
     }
 }
 
+/* Ajustes adicionales para pantallas medianas */
+@media (min-width: 769px) and (max-width: 1400px) {
 
+    
+    /* Asegurar que el submenú no se corte */
+    .nav-menu > ul > li:last-child .submenu {
+        left: auto;
+        right: 0;
+    }
+    
+    .nav-menu > ul > li:nth-last-child(2) .submenu {
+        left: 0;
+        right: auto;
+    }
+}
 
 
 
