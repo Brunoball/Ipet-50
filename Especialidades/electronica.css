@@ -781,6 +781,35 @@ body.menu-open {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
+/* Estilos para los iconos de las tarjetas */
+.card-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(52, 152, 219, 0.9);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    transform: scale(1.1)
+}
+
+
+
+
+@media (max-width: 768px) {
+    .card-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
 .card-image {
     height: 200px;
     overflow: hidden;
@@ -793,9 +822,7 @@ body.menu-open {
     transition: var(--transition);
 }
 
-.trabajo-card:hover .card-image img {
-    transform: scale(1.05);
-}
+
 
 .card-content {
     padding: 25px;
@@ -995,7 +1022,6 @@ body.menu-open {
 }
 
 .evento-description {
-    background: white;
     border-radius: 12px;
     margin-top: 40px;
 }
@@ -1069,12 +1095,11 @@ body.menu-open {
 
 
 .testimonios-section {
-    padding: 80px 20px;
+    padding: 20px 0;
     width: 100%;
     position: relative;
     background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.9) 100%), 
     url(/imgnuevas/escuela3.jpg);
-
     background-size: cover; /* para que cubra toda la pantalla */
     background-position: center; /* para centrarla */
     background-repeat: no-repeat; /* para que no se repita */
@@ -1114,6 +1139,8 @@ body.menu-open {
 }
 
 .testimonios-slider {
+    margin: auto;
+    max-width: 1200px;
     position: relative;
     overflow: hidden;
     padding: 0 60px;
@@ -1121,13 +1148,19 @@ body.menu-open {
 
 .testimonios-track {
     display: flex;
-    transition: transform 0.5s ease;
+    transition: transform 1.5s ease;
 }
 
 .testimonio-card {
     min-width: 100%;
     padding: 0 15px;
     transition: all 0.3s ease;
+}
+.testimonio-card:not(.active) {
+    opacity: 0.6; /* Hace más transparente */
+    filter: blur(1px); /* Aplica un ligero desenfoque */
+    transform: scale(0.9); /* Reduce ligeramente el tamaño */
+    transition: all 0.3s ease; /* Suaviza la transición */
 }
 
 .testimonio-content {
@@ -1253,13 +1286,15 @@ body.menu-open {
 }
 
 .dot.active {
+    outline: 1px solid #ffffff;
     background-color: var(--secondary-color);
     transform: scale(1.2);
 }
 
 @media (max-width: 768px) {
     .testimonios-section {
-        padding: 50px 15px;
+        width:100%;
+        padding:  15px;
     }
 
     .section-title-testimonios {
@@ -1271,15 +1306,38 @@ body.menu-open {
     }
 
     .testimonio-content {
-        padding: 30px 20px;
+        width: 300px;
+        display: flex;
+        flex-direction: column-reverse;
+        padding: 30px 20px 0 20px;
     }
 
     .slider-nav {
-        width: 40px;
-        height: 40px;
+        display: none;
     }
 }
-
+@media (max-width: 768px) {
+    .testimonios-track {
+        /* Mejorar rendimiento en dispositivos táctiles */
+        will-change: transform;
+        transition: transform 0.5s ease;
+        touch-action: pan-y; /* Permite desplazamiento vertical pero bloquea el horizontal */
+    }
+    
+    .testimonio-card {
+        /* Mejorar la respuesta táctil */
+        user-select: none;
+        -webkit-user-drag: none;
+    }
+    
+    /* Ajustar botones de navegación para móviles */
+    
+    /* Asegurar que los testimonios ocupen todo el ancho */
+    .testimonio-card {
+        min-width: 100%;
+        padding: 0 10px;
+    }
+}
 
 /* Footer Section */
 .footer-section {

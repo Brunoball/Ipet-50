@@ -259,18 +259,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const dots = document.querySelectorAll('.dot');
     let currentIndex = 0;
     let autoSlideInterval;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const swipeThreshold = 50; // Mínimo de píxeles para considerar un swipe
 
-    // Actualizar posición del slider
+    // Función para actualizar el slider
     function updateSlider() {
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-        // Actualizar dots
+        
+        cards.forEach((card, index) => {
+            if (index === currentIndex) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
+        });
+        
         dots.forEach(dot => dot.classList.remove('active'));
         dots[currentIndex].classList.add('active');
     }
 
-    // Ir al slide específico
+    // Navegar a un slide específico
     function goToSlide(index) {
+        if (index < 0) index = cards.length - 1;
+        if (index >= cards.length) index = 0;
+        
         currentIndex = index;
         updateSlider();
         resetAutoSlide();
@@ -278,14 +291,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Siguiente slide
     function nextSlide() {
-        currentIndex = (currentIndex + 1) % cards.length;
-        updateSlider();
+        goToSlide(currentIndex + 1);
     }
 
     // Anterior slide
     function prevSlide() {
-        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-        updateSlider();
+        goToSlide(currentIndex - 1);
     }
 
     // Auto slide
@@ -298,37 +309,73 @@ document.addEventListener('DOMContentLoaded', function() {
         startAutoSlide();
     }
 
-    // Event listeners
+    // Event listeners para botones
     prevBtn.addEventListener('click', () => {
         prevSlide();
-        resetAutoSlide();
     });
 
     nextBtn.addEventListener('click', () => {
         nextSlide();
-        resetAutoSlide();
     });
 
+    // Event listeners para dots
     dots.forEach(dot => {
         dot.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-index'));
-            goToSlide(index);
+            if (index !== currentIndex) {
+                goToSlide(index);
+            }
         });
     });
 
     // Navegación por teclado
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowRight') {
-            nextSlide();
-            resetAutoSlide();
-        } else if (e.key === 'ArrowLeft') {
-            prevSlide();
-            resetAutoSlide();
-        }
+        e.preventDefault();
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
     });
 
-    // Iniciar auto slide
+    // Event listeners táctiles para móviles
+    function handleTouchStart(e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }
+
+    function handleTouchEnd(e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }
+
+    function handleSwipe() {
+        const difference = touchStartX - touchEndX;
+        
+        // Swipe izquierda (pasar al siguiente)
+        if (difference > swipeThreshold) {
+            nextSlide();
+        } 
+        // Swipe derecha (volver al anterior)
+        else if (difference < -swipeThreshold) {
+            prevSlide();
+        }
+    }
+
+    // Agregar event listeners táctiles solo en móviles
+    function setupTouchEvents() {
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            track.addEventListener('touchstart', handleTouchStart, {passive: true});
+            track.addEventListener('touchend', handleTouchEnd, {passive: true});
+        } else {
+            track.removeEventListener('touchstart', handleTouchStart);
+            track.removeEventListener('touchend', handleTouchEnd);
+        }
+    }
+
+    // Inicializar
     startAutoSlide();
+    updateSlider();
+    setupTouchEvents();
+
+    // Actualizar al cambiar tamaño de pantalla
+    window.addEventListener('resize', setupTouchEvents);
 
     // Pausar al interactuar
     track.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
