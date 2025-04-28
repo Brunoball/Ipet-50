@@ -1277,13 +1277,7 @@ footer {
 
 
 
-
-
-
-
-
-
-/* Stats Section Styles - Versión Minimalista */
+/* Stats Section Styles - Versión Minimalista (ORIGINAL) */
 .stats-section {
     background-color: var(--light-gray);
     padding: 60px 0;
@@ -1337,7 +1331,7 @@ footer {
     font-family: 'Open Sans', sans-serif;
 }
 
-/* Efectos hover sutiles */
+/* Efectos hover (ORIGINAL) */
 .stat-item:hover .stat-icon {
     transform: scale(1.1);
 }
@@ -1346,53 +1340,38 @@ footer {
     color: #c00511;
 }
 
-/* Ajuste para el ícono de + */
-.plus-icon {
-    font-size: 1.5rem;
-    color: #e30613;
-    vertical-align: middle;
-    margin-right: 5px;
-}
-
-/* Alinear ícono + número en la misma línea */
-.stat-number.plus {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-}
-
-
-/* Responsive adjustments */
+/* Ajuste responsivo (SOLO cambia el orden, mantiene ESTILO ORIGINAL) */
 @media (max-width: 768px) {
     .stats-container {
-        flex-direction: column;
-        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 0 15px;
     }
     
     .stat-item {
-        width: 100%;
-        max-width: 300px;
-        margin-bottom: 30px;
+        min-width: auto;
+        margin: 0;
+        padding: 20px 15px; /* Mantengo el padding original */
+    }
+
+    .stat-number.plus .plus-icon {
+        display: none;
     }
     
-    .stat-number {
-        font-size: 2.2rem;
-    }
+    /* ORDEN FIJO (único cambio real) */
+    .stat-item:nth-child(1) { order: 1; } /* Alumnos (arriba izquierda) */
+    .stat-item:nth-child(2) { order: 3; } /* Docentes (arriba derecha) */
+    .stat-item:nth-child(3) { order: 2; } /* Egresados (abajo izquierda) */
+    .stat-item:nth-child(4) { order: 4; } /* Trayectoria (abajo derecha) */
 }
 
 @media (max-width: 480px) {
+    .stat-item {
+        padding: 18px 12px; /* Ligero ajuste para móvil muy pequeño */
+    }
+    
     .stat-number {
-        font-size: 2rem;
-    }
-    
-    .stat-label {
-        font-size: 0.85rem;
-    }
-    
-    .stat-icon {
-        width: 45px;
-        height: 45px;
-        font-size: 22px;
+        font-size: 2.2rem; /* Tamaño original para móvil */
     }
 }
