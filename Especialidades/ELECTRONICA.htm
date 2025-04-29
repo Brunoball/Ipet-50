@@ -34,6 +34,7 @@
                     <a href="#perfil-egresado" class="nav-link">PERFIL DEL EGRESADO</a>
                     <a href="#nuestro-trabajo" class="nav-link">NUESTRO TRABAJO</a>
                     <a href="#microevento" class="nav-link">EVENTOS</a>
+                    <a href="#Testimonios" class="nav-link">TESTIMONIOS</a>
                     <a href="#footer" class="contact-btn">CONTACTO</a>
                 </div>
             </div>
@@ -60,7 +61,10 @@
     <main>
         <section id="perfil-egresado" class="perfil-section">
             <div class="contenedor">
-                <h2 class="section-title">PERFIL DEL EGRESADO</h2>
+                <h2 class="section-title">PERFIL DEL EGRESADO<span class="title-icon"><i class="fas fa-user-graduate"></i></span>
+                </h2>
+
+                
         
                 <div id="PDE" class="perfil-content">
                     <div class="perfil-gallery-container">
@@ -128,14 +132,9 @@
 <!-- Sección Nuestro Trabajo con hover effects -->
 <section id="nuestro-trabajo" class="trabajo-section">
     <div class="contenedor">
-        <h2 class="section-title">
-            <span class="title-icon"><i class="fas fa-laptop-code"></i></span>
-            <span>NUESTRO TRABAJO</span>
-        </h2>
+        <h2 class="section-title">NUESTRO TRABAJO<span class="title-icon"><i class="fas fa-laptop-code"></i></span></h2>
         
-        <div class="section-intro">
-            <p>Explora las áreas clave donde nuestros estudiantes y egresados están marcando la diferencia en el mundo tecnológico.</p>
-        </div>
+    
         
         <div class="trabajo-grid">
             <div class="trabajo-card">
@@ -224,11 +223,15 @@
     </div>
 </section>
 
+                <!-- Sección Eventos con timeline -->
         <section id="microevento" class="evento-section">
             <div class="contenedor">
                 <div class="section-header">
-                    <h2 class="section-title">Microevento del Departamento</h2>
-                </div>
+                    <h2 class="section-title">
+                        EVENTOS DEL DEPARTAMENTO
+                        <span class="title-icon"><i class="fas fa-calendar-alt"></i></span>
+                    </h2>
+                </div>
                 
                 <div class="evento-content">
                     <div class="evento-proyectos-container">
@@ -278,10 +281,9 @@
             </div>
         </section>
     </main>
-    <section class="testimonios-section">
-        <div class="section-header">
+    <section id="Testimonios" class="testimonios-section">
+        <div class="section-header section-header-testimonios">
             <h2 class="section-title-testimonios">Testimonios Estudiantiles</h2>
-            <p class="section-subtitle">Experiencias reales de nuestros estudiantes</p>
         </div>
 
         <div class="testimonios-slider">
@@ -347,6 +349,9 @@
                 </div>
             </div>
 
+            <!-- Icono de swipe para móviles - AÑADIDO AQUÍ -->
+
+
             <button class="slider-nav slider-prev"><i class="fas fa-chevron-left"></i></button>
             <button class="slider-nav slider-next"><i class="fas fa-chevron-right"></i></button>
         </div>
@@ -407,10 +412,12 @@
     <div class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
-    <!-- Sección de Testimonios -->
 
     <script src="../scripts/menu_electronica.js"></script>
     <script src="../scripts/boton_arriba.js"></script>
     <script src="../scripts/electronica.js"></script>
+    
+
+
 </body>
 </html>

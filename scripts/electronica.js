@@ -137,7 +137,7 @@ function initSlider(config) {
     }
     
     function startAutoRotation() {
-        slideInterval = setInterval(autoRotate, 5000);
+        slideInterval = setInterval(autoRotate, 3000);
     }
     
     function resetInterval() {
@@ -254,18 +254,24 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener('DOMContentLoaded', function() {
     const track = document.querySelector('.testimonios-track');
     const cards = document.querySelectorAll('.testimonio-card');
+    const dots = document.querySelectorAll('.dot');
     const prevBtn = document.querySelector('.slider-prev');
     const nextBtn = document.querySelector('.slider-next');
-    const dots = document.querySelectorAll('.dot');
+    
     let currentIndex = 0;
-    let autoSlideInterval;
-    let touchStartX = 0;
-    let touchEndX = 0;
-    const swipeThreshold = 50; // Mínimo de píxeles para considerar un swipe
-
-    // Función para actualizar el slider
+    const cardCount = cards.length;
+    const cardWidth = cards[0].offsetWidth;
+    
     function updateSlider() {
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        if (window.innerWidth <= 768) {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        } else {
+            track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        }
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
         
         cards.forEach((card, index) => {
             if (index === currentIndex) {
@@ -274,110 +280,62 @@ document.addEventListener('DOMContentLoaded', function() {
                 card.classList.remove('active');
             }
         });
-        
-        dots.forEach(dot => dot.classList.remove('active'));
-        dots[currentIndex].classList.add('active');
     }
-
-    // Navegar a un slide específico
-    function goToSlide(index) {
-        if (index < 0) index = cards.length - 1;
-        if (index >= cards.length) index = 0;
-        
-        currentIndex = index;
+    
+    function goToPrev() {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : cardCount - 1;
         updateSlider();
-        resetAutoSlide();
     }
-
-    // Siguiente slide
-    function nextSlide() {
-        goToSlide(currentIndex + 1);
+    
+    function goToNext() {
+        currentIndex = (currentIndex < cardCount - 1) ? currentIndex + 1 : 0;
+        updateSlider();
     }
-
-    // Anterior slide
-    function prevSlide() {
-        goToSlide(currentIndex - 1);
-    }
-
-    // Auto slide
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(nextSlide, 5000);
-    }
-
-    function resetAutoSlide() {
-        clearInterval(autoSlideInterval);
-        startAutoSlide();
-    }
-
-    // Event listeners para botones
-    prevBtn.addEventListener('click', () => {
-        prevSlide();
-    });
-
-    nextBtn.addEventListener('click', () => {
-        nextSlide();
-    });
-
-    // Event listeners para dots
+    
+    // Event listeners para los dots
     dots.forEach(dot => {
         dot.addEventListener('click', function() {
-            const index = parseInt(this.getAttribute('data-index'));
-            if (index !== currentIndex) {
-                goToSlide(index);
-            }
+            currentIndex = parseInt(this.getAttribute('data-index'));
+            updateSlider();
         });
     });
-
-    // Navegación por teclado
-    document.addEventListener('keydown', function(e) {
-        e.preventDefault();
-        if (e.key === 'ArrowRight') nextSlide();
-        if (e.key === 'ArrowLeft') prevSlide();
+    
+    // Botones de navegación
+    prevBtn.addEventListener('click', goToPrev);
+    nextBtn.addEventListener('click', goToNext);
+    
+    // Touch events para móvil
+    let startX, moveX;
+    track.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
     });
-
-    // Event listeners táctiles para móviles
-    function handleTouchStart(e) {
-        touchStartX = e.changedTouches[0].screenX;
-    }
-
-    function handleTouchEnd(e) {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }
-
-    function handleSwipe() {
-        const difference = touchStartX - touchEndX;
-        
-        // Swipe izquierda (pasar al siguiente)
-        if (difference > swipeThreshold) {
-            nextSlide();
-        } 
-        // Swipe derecha (volver al anterior)
-        else if (difference < -swipeThreshold) {
-            prevSlide();
+    
+    track.addEventListener('touchmove', function(e) {
+        moveX = e.touches[0].clientX;
+    });
+    
+    track.addEventListener('touchend', function() {
+        if (startX - moveX > 50) {
+            goToNext();
+        } else if (moveX - startX > 50) {
+            goToPrev();
         }
-    }
-
-    // Agregar event listeners táctiles solo en móviles
-    function setupTouchEvents() {
-        if (window.matchMedia("(max-width: 768px)").matches) {
-            track.addEventListener('touchstart', handleTouchStart, {passive: true});
-            track.addEventListener('touchend', handleTouchEnd, {passive: true});
-        } else {
-            track.removeEventListener('touchstart', handleTouchStart);
-            track.removeEventListener('touchend', handleTouchEnd);
+    });
+    
+    // Control con teclado
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+            goToPrev();
+        } else if (e.key === 'ArrowRight') {
+            goToNext();
         }
-    }
-
-    // Inicializar
-    startAutoSlide();
+    });
+    
+    // Inicializar slider
     updateSlider();
-    setupTouchEvents();
-
-    // Actualizar al cambiar tamaño de pantalla
-    window.addEventListener('resize', setupTouchEvents);
-
-    // Pausar al interactuar
-    track.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-    track.addEventListener('mouseleave', startAutoSlide);
+    
+    // Ajustar en redimensionamiento
+    window.addEventListener('resize', function() {
+        updateSlider();
+    });
 });
