@@ -1180,7 +1180,8 @@
   
   @media (max-width: 768px) {
     .card-content{
-      height: 250px;
+      height: auto;
+      padding-bottom: 25px;
     }
     .trabajo-grid {
       display: flex;
