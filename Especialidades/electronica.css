@@ -1147,7 +1147,7 @@
   /* ===== MEDIA QUERIES ===== */
   @media (max-width: 992px) {
     .section-header-testimonios{
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
      
        }
     .hero-content{
