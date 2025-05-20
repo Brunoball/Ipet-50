@@ -17,101 +17,186 @@
 </head>
 
 <body>
-    <img class="fondo" src="fa_fondo.jpg" alt="">
-    
-    <div class="contenedor">
-        <div class="box-menu">
-            <div class="menu">
-                <img class="escudo" src="../img/Escudo.png" alt="">
-                <h1 class="tituloprinc">Gabinetes y Oficinas</h1>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img class="escudo" src="../img/Escudo.png" alt="Escudo IPET 50">
+                <h1 class="titulo-principal">IPET 50</h1>
             </div>
+            <nav>
+                <!-- Aquí podrías añadir un menú de navegación si es necesario -->
+            </nav>
         </div>
+    </header>
+    
+    <main class="main-content">
+        <section class="hero-section">
+            <img class="hero-image" src="../imgnuevas/gabinete2.jpg" alt="Gabinetes y Oficinas IPET 50">
+            <div class="hero-overlay">
+                <h2 class="hero-title">Gabinetes y Oficinas</h2>
+                <p class="hero-subtitle">Espacios dedicados al apoyo educativo y administrativo</p>
+            </div>
+        </section>
+        
+        <section class="content-section">
 
-        <section>
-            <div class="contenedor-sobre-nosotros">
+            
+            <div class="text-content">
+                <h2>Nuestros Espacios</h2>
+                <p>El IPET 50 cuenta con Gabinete Psicopedagógico y Coordinación de Cursos, abocados al desempeño de los alumnos, a los casos particulares de mismos, así como también a las interrelaciones en los ámbitos de aprendizaje y con las familias.</p>
+                <p>También se dispone de un Laboratorio de Informática, equipado con 14 máquinas que es utilizado por numerosos docentes y un Laboratorio de Físico-Química, preparado para realizar diversos experimentos.</p>
+                <p>Desde las oficinas, se realiza la administración general de la institución, que cuenta con 829 alumnos y 220 docentes y no docentes.</p>
+            </div>
+                        <div class="slider-container">
                 <div class="slider">
-                    <ul class="slides">
-                        <li class="slide"><img src="../imgnuevas/gabinete.jpg"></li>
-                        <li class="slide"><img src="../imgnuevas/gabinete2.jpg"></li>
-                        <li class="slide"><img src="../imgnuevas/gabinete3.jpg"></li>
-                        <li class="slide"><img src="../imgnuevas/gabinete6.jpg"></li>
-                        <li class="slide"><img src="../imgnuevas/gabinetes5.jpg"></li>
-                    </ul>
-                    <div class="prev" onclick="prevSlide()">&#10094;</div>
-                    <div class="next" onclick="nextSlide()">&#10095;</div>
-                    <div class="puntos-container">
-                        <span class="punto" onclick="currentSlide(1)"></span>
-                        <span class="punto" onclick="currentSlide(2)"></span>
-                        <span class="punto" onclick="currentSlide(3)"></span>
-                        <span class="punto" onclick="currentSlide(4)"></span>
-                        <span class="punto" onclick="currentSlide(5)"></span>
+                    <div class="slides">
+                        <div class="slide"><img src="../imgnuevas/gabinete.jpg" alt="Gabinete 1"></div>
+                        <div class="slide"><img src="../imgnuevas/gabinete2.jpg" alt="Gabinete 2"></div>
+                        <div class="slide"><img src="../imgnuevas/gabinete3.jpg" alt="Gabinete 3"></div>
+                        <div class="slide"><img src="../imgnuevas/gabinete6.jpg" alt="Gabinete 4"></div>
+                        <div class="slide"><img src="../imgnuevas/gabinetes5.jpg" alt="Gabinete 5"></div>
+                    </div>
+                    <div class="slider-arrow prev" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></div>
+                    <div class="slider-arrow next" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></div>
+                    <div class="slider-nav">
+                        <div class="slider-dot active" onclick="currentSlide(1)"></div>
+                        <div class="slider-dot" onclick="currentSlide(2)"></div>
+                        <div class="slider-dot" onclick="currentSlide(3)"></div>
+                        <div class="slider-dot" onclick="currentSlide(4)"></div>
+                        <div class="slider-dot" onclick="currentSlide(5)"></div>
                     </div>
                 </div>
-
-                <div class="contenido-textos">
-                    <p>
-                        El IPET 50 cuenta con Gabinete Psicopedagógico y Coordinación de Cursos, abocados al desempeño de los alumnos, a los casos particulares de mismos, así como también a las interrelaciones en los ámbitos de aprendizaje y con las familias.<br>
-                        También se dispone de un Laboratorio de Informática, equipado con 14 máquinas que es utilizado por numerosos docentes y un Laboratorio de Físico-Química, preparado para realizar diversos experimentos.<br>
-                        Desde las oficinas, se realiza la administración general de la institución, que cuenta con 829 alumnos y 220 docentes y no docentes.<br>
-                    </p>
-                </div> 
-                <div class="contenido-textos-2">
-                    <p>
-                        La institución cuenta con la Biblioteca "Bernardino Rivadavia", equipada con más de 12000 ejemplares para la Formación Básica y la Formación Orientada de las seis especialidades.
-                    </p>
-                </div>   
-
-                <div class="contenido-textos-mov">
-                    <p>
-                        El IPET 50 cuenta con Gabinete Psicopedagógico y Coordinación de Cursos, abocados al desempeño de los alumnos, a los casos particulares de mismos, así como también a las interrelaciones en los ámbitos de aprendizaje y con las familias.<br>
-                        También se dispone de un Laboratorio de Informática, equipado con 14 máquinas que es utilizado por numerosos docentes y un Laboratorio de Físico-Química, preparado para realizar diversos experimentos.<br>
-                        Desde las oficinas, se realiza la administración general de la institución, que cuenta con 829 alumnos y 220 docentes y no docentes.<br>
-                        La institución cuenta con la Biblioteca "Bernardino Rivadavia", equipada con más de 12000 ejemplares para la Formación Básica y la Formación Orientada de las seis especialidades.
-                    </p>
-                </div>   
             </div>
-        </section> 
-
- 
-
-        <div class="footer">
-            <ul class="footer-list">
-                <li class="list"><a href="../WEB.htm">INICIO</a></li>
-                <li class="list">
-                    <a href="../WEB.htm#especialidades">FORMACIÓN TÉCNICA</a>
-                    <ul class="sublist">
+        </section>
+        
+        <section class="text-content">
+            <h2>Biblioteca "Bernardino Rivadavia"</h2>
+            <p>La institución cuenta con la Biblioteca "Bernardino Rivadavia", equipada con más de 12000 ejemplares para la Formación Básica y la Formación Orientada de las seis especialidades.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+                    <h3 class="feature-title">Amplio Catálogo</h3>
+                    <p class="feature-text">Más de 12,000 ejemplares disponibles para consulta y préstamo.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-laptop"></i></div>
+                    <h3 class="feature-title">Laboratorio de Informática</h3>
+                    <p class="feature-text">14 equipos disponibles para uso educativo y de investigación.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-flask"></i></div>
+                    <h3 class="feature-title">Laboratorio Científico</h3>
+                    <p class="feature-text">Equipado para experimentos de Física y Química.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3 class="feature-title">Apoyo Psicopedagógico</h3>
+                    <p class="feature-text">Atención personalizada para estudiantes y familias.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Inicio</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Página Principal</a></li>
+                        <li><a href="../index.html#nosotros">Sobre Nosotros</a></li>
+                        <li><a href="../index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Formación Técnica</h3>
+                    <ul class="footer-links">
                         <li><a href="../Especialidades/ELECTRONICA.htm">Electrónica</a></li>
                         <li><a href="../Especialidades/ELECTRICIDAD.htm">Electricidad</a></li>
                         <li><a href="../Especialidades/MECANICA.htm">Mecánica</a></li>
                         <li><a href="../Especialidades/AUTOMOTORES.htm">Automotores</a></li>
-                        <li><a href="../Especialidades/MMO.htm">Mmo</a></li>
-                        <li><a href="../Especialidades/IMM.htm">Imm</a></li>
+                        <li><a href="../Especialidades/MMO.htm">MMO</a></li>
+                        <li><a href="../Especialidades/IMM.htm">IMM</a></li>
                     </ul>
-                </li>
-                <li class="list">
-                    <a href="../WEB.htm#formacion">FORMACIÓN ACADÉMICA</a>
-                    <ul class="sublist2">
-                        <li><a href="../Formacion academica/SOCIALES.htm">Dpto Sociales</a></li>
-                        <li><a href="../Formacion academica/ECONOMIA.htm">Dpto Economía</a></li>
-                        <li><a href="../Formacion academica/NATURALES.htm">Dpto Naturales</a></li>
-                        <li><a href="../Formacion academica/ARTES.htm">Dpto Artística</a></li>
-                        <li><a href="../Formacion academica/MATEMATICA.htm">Dpto Matemáticas</a></li>
-                        <li><a href="../Formacion academica/TECNOLOGIA.htm">Tecnología y Dt</a></li>
-                        <li><a href="../Formacion academica/INGLES.htm">Dpto Ingles</a></li>
-                        <li><a href="../Formacion academica/LENGUA.htm">Dpto Lengua</a></li>
-                        <li><a href="../Formacion academica/EDFISICA.htm">Dpto Ed Física</a></li>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Formación Académica</h3>
+                    <ul class="footer-links">
+                        <li><a href="../Formacion academica/SOCIALES.htm">Ciencias Sociales</a></li>
+                        <li><a href="../Formacion academica/ECONOMIA.htm">Economía</a></li>
+                        <li><a href="../Formacion academica/NATURALES.htm">Ciencias Naturales</a></li>
+                        <li><a href="../Formacion academica/ARTES.htm">Artes</a></li>
+                        <li><a href="../Formacion academica/MATEMATICA.htm">Matemáticas</a></li>
                     </ul>
-                </li>
-                <li class="list"><a href="../WEB.htm#nosotros">INSTITUCIONAL</a></li>
-                <li class="list"><a href="../WEB.htm#footer">CONTACTO</a></li>
-            </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Dirección: [Dirección de la escuela]</li>
+                        <li><i class="fas fa-phone"></i> Teléfono: [Teléfono]</li>
+                        <li><i class="fas fa-envelope"></i> Email: [Email]</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 IPET 50 - Todos los derechos reservados</p>
+            </div>
         </div>
+    </footer>
+    
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
         
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
         
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
         
-    </div>
-    <script src="../scripts/movil.js"></script>
-    <script src="../scripts/slider-web.js"></script>
-    <script src="../scripts/slider_simple.js"></script>
+        function showSlides(n) {
+            let i;
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("slider-dot");
+            
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+        
+        // Auto slide change
+        setInterval(() => {
+            plusSlides(1);
+        }, 5000);
+        
+        // Navigation functions
+        function prevSlide() {
+            plusSlides(-1);
+        }
+        
+        function nextSlide() {
+            plusSlides(1);
+        }
+    </script>
 </body>
 </html>

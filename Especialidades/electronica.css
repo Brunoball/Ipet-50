@@ -162,9 +162,9 @@ nav, .hero {
   }
   
   .menu-container {
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 30px;
+    max-width: 1200px;
+    padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -178,10 +178,10 @@ nav, .hero {
     align-items: center;
   }
   
-  .logo::before {
-    content: "⚡";
-    margin-right: 10px;
-    font-size: 1.8rem;
+  .logo i {
+    font-size: 1.5rem;
+    padding-right: 1rem;
+    color:  var(--primary-color);
   }
   
   .nav-links {
@@ -201,7 +201,7 @@ nav, .hero {
   }
   
   #menu a:hover {
-    color: #d63031;
+    color: #2c3e50;
   }
   
   #menu a::after {
@@ -212,14 +212,18 @@ nav, .hero {
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background: #b71540;
+    background: #00b4ff;
     transition: var(--transition);
   }
   
   #menu a:hover::after {
     width: 70%;
   }
-  
+    #menu .logo::after{
+      margin-top: 2.5rem;
+      bottom: auto;
+
+  }
   .contact-btn {
     background-color: var(--primary-color);
     color: white !important;
@@ -259,7 +263,7 @@ nav, .hero {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding: 20px;
+    padding:1rem 20px 0;
     text-align: center;
     margin: 0 auto;
     max-width: 800px;
@@ -294,14 +298,13 @@ nav, .hero {
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: var(--transition);
-    box-shadow: 0 5px 15px rgb(219 52 52 / 40%);
-    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(52, 147, 219, 0.509);
   }
   
   .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow:  0 5px 15px rgb(219 52 52 / 40%);
-    background-color: #b71540;
+    box-shadow:  0 5px 15px rgba(52, 147, 219, 0.833);
+    background-color: var(--primary-color);
   }
   
   .wave-divider {
@@ -873,7 +876,7 @@ nav, .hero {
     position: absolute;
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    background: linear-gradient(90deg, var(--gray-light), var(--primary-color));
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
@@ -926,11 +929,11 @@ nav, .hero {
   .testimonio-year {
     position: absolute;
     z-index: 9999999;
-    outline: 2px solid #3498db;
+    outline: 2px solid var(--primary-color);
     top: 20px;
     right: 20px;
     background-color: var(--light-color);
-    color: var(--secondary-color);
+    color: var(--dark-color);
     font-weight: bold;
     padding: 5px 15px;
     border-radius: 20px;
@@ -947,7 +950,6 @@ nav, .hero {
     position: relative;
     margin: auto;
     padding: 20px;
-    border-left: 3px solid var(--secondary-color);
   }
   
   .testimonio-author {
@@ -998,14 +1000,14 @@ nav, .hero {
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border: none;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     font-size: 1.2rem;
     transition: var(--transition);
     z-index: 10;
   }
   
   .slider-nav:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: white;
     transform: translateY(-50%) scale(1.1);
   }
@@ -1036,7 +1038,7 @@ nav, .hero {
   
   .dot.active {
     outline: 1px solid #ffffff;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     transform: scale(1.2);
   }
   
@@ -1046,6 +1048,10 @@ nav, .hero {
     color: var(--light-color);
     padding: 60px 0 20px;
     position: relative;
+  }
+  .footer-social-link:hover{
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
   }
   
   .footer-container {

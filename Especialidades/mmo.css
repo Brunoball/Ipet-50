@@ -11,7 +11,6 @@
     --white: #FFFFFF;
     --gray-light: #E0E0E0;  /* Fondo gris claro */
     
-    /* Transiciones */
     --transition: all 0.3s ease;
 }
   
@@ -119,7 +118,7 @@ header {
 
 .header-background {
   position: fixed;
-  top: 0;
+  top: 3rem;
   left: 0;
   width: 100%;
   height: 100vh;
@@ -162,9 +161,9 @@ nav, .hero {
   }
   
   .menu-container {
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 30px;
+    max-width: 1200px;
+    padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -177,31 +176,33 @@ nav, .hero {
     display: flex;
     align-items: center;
   }
-  
-  .logo::before {
-    content: "⚡";
-    margin-right: 10px;
-    font-size: 1.8rem;
+  .logo img {
+    width: 3.3rem;
+    padding-right: 1rem;
+    color: saddlebrown;
+    
   }
+  
+
   
   .nav-links {
     display: flex;
     align-items: center;
+    gap: 1rem;
   }
   
   #menu a {
     color: var(--dark-color);
-    margin: 0 15px;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: var(--transition);
-    padding: 0 15px;
+    padding: 0 1rem;
     border-radius: 8px;
     position: relative;
   }
   
   #menu a:hover {
-    color: #d63031;
+    color: var(--dark-color);
   }
   
   #menu a::after {
@@ -212,12 +213,17 @@ nav, .hero {
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background: #b71540;
+    background: var(--accent-color);
     transition: var(--transition);
   }
   
   #menu a:hover::after {
     width: 70%;
+  }
+  #menu .logo::after{
+      margin-top: 2rem;
+      bottom: auto;
+
   }
   
   .contact-btn {
@@ -259,7 +265,7 @@ nav, .hero {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding: 20px;
+    padding:1rem 20px 0;
     text-align: center;
     margin: 0 auto;
     max-width: 800px;
@@ -294,14 +300,13 @@ nav, .hero {
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: var(--transition);
-    box-shadow: 0 5px 15px rgb(219 52 52 / 40%);
-    margin-bottom: 30px;
+    box-shadow: 0 5px 15px #ff7e3377;
   }
   
   .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow:  0 5px 15px rgb(219 52 52 / 40%);
-    background-color: #b71540;
+    box-shadow:  0 5px 15px #ff7e33c2;
+    background-color: var(--primary-color);
   }
   
   .wave-divider {
@@ -670,7 +675,7 @@ nav, .hero {
     left: 1rem;
     width: 50px;
     height: 3px;
-    background: #3498db;
+    background: var(--primary-color);
     border-radius: 3px;
   }
   
@@ -701,7 +706,7 @@ nav, .hero {
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
-    color: #3498db;
+    color: var(--primary-color);
     font-size: 0.9rem;
   }
   
@@ -823,7 +828,7 @@ nav, .hero {
   .evento-link {
     display: inline-flex;
     align-items: center;
-    color: #3498db;
+    color: var(--primary-color);
     font-weight: 600;
     text-decoration: none;
     margin-top: 15px;
@@ -836,7 +841,7 @@ nav, .hero {
   }
   
   .evento-link:hover {
-    color: #2980b9;
+    color: var(--accent-color);
   }
   
   .evento-link:hover i {
@@ -852,7 +857,7 @@ nav, .hero {
     padding: 20px 0;
     width: 100%;
     position: relative;
-    background: linear-gradient(135deg, rgba(29, 53, 87, 0.8) 0%, rgba(27, 38, 59, 0.9) 100%), 
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.3) 0%, rgba(26, 26, 26, 0.8) 100%), 
                 url(/imgnuevas/escuela3.jpg);
     background-size: cover;
     background-position: center;
@@ -873,7 +878,7 @@ nav, .hero {
     position: absolute;
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    background: linear-gradient(90deg, var(--white), var(--primary-color));
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
@@ -926,11 +931,11 @@ nav, .hero {
   .testimonio-year {
     position: absolute;
     z-index: 9999999;
-    outline: 2px solid #3498db;
+    outline: 2px solid var(--primary-color);
     top: 20px;
     right: 20px;
     background-color: var(--light-color);
-    color: var(--secondary-color);
+    color: var(--dark-color);
     font-weight: bold;
     padding: 5px 15px;
     border-radius: 20px;
@@ -947,7 +952,6 @@ nav, .hero {
     position: relative;
     margin: auto;
     padding: 20px;
-    border-left: 3px solid var(--secondary-color);
   }
   
   .testimonio-author {
@@ -998,14 +1002,14 @@ nav, .hero {
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border: none;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     font-size: 1.2rem;
     transition: var(--transition);
     z-index: 10;
   }
   
   .slider-nav:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: white;
     transform: translateY(-50%) scale(1.1);
   }
@@ -1036,7 +1040,7 @@ nav, .hero {
   
   .dot.active {
     outline: 1px solid #ffffff;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     transform: scale(1.2);
   }
   
@@ -1046,6 +1050,10 @@ nav, .hero {
     color: var(--light-color);
     padding: 60px 0 20px;
     position: relative;
+  }
+  .footer-social-link:hover{
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
   }
   
   .footer-container {
