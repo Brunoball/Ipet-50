@@ -197,41 +197,111 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
-    const readMoreBtn = document.querySelector(".read-more-btn");
-    const extraContent = document.querySelector(".extra-content");
-    const btnText = document.querySelector(".btn-text");
+    // Función para manejar el botón "Leer más/menos"
+    function setupReadMoreButtons() {
+        document.querySelectorAll('.read-more-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const contentToggle = this.closest('.content-toggle');
+                if (!contentToggle) return;
 
-    readMoreBtn.addEventListener("click", function () {
-        const isExpanded = extraContent.classList.contains("expanded");
+                const extraContent = contentToggle.querySelector('.extra-content');
+                if (!extraContent) return;
 
-        if (isExpanded) {
-            // Cierre: establecer altura actual, luego a 0 para que sea suave
-            extraContent.style.maxHeight = extraContent.scrollHeight + "px"; 
-            requestAnimationFrame(() => {
-                extraContent.style.maxHeight = "0px";
-                extraContent.style.opacity = "0";
-                extraContent.style.margin = "0";
+                const isExpanded = extraContent.classList.contains('expanded');
+                
+                // Obtener la altura exacta del contenido
+                const contentHeight = extraContent.scrollHeight;
+                
+                if (isExpanded) {
+                    // Animación de cierre
+                    extraContent.style.maxHeight = contentHeight + 'px';
+                    // Forzar repintado
+                    void extraContent.offsetHeight;
+                    extraContent.style.maxHeight = '0';
+                    extraContent.style.opacity = '0';
+                    extraContent.style.padding = '0';
+                    extraContent.style.margin = '0';
+                } else {
+                    // Animación de apertura
+                    extraContent.style.maxHeight = '0';
+                    // Forzar repintado
+                    void extraContent.offsetHeight;
+                    extraContent.style.maxHeight = contentHeight + 'px';
+                    extraContent.style.opacity = '1';
+                    extraContent.style.padding = '1rem 0.5rem';
+                    extraContent.style.margin = '1.5rem 0';
+                }
+
+                extraContent.classList.toggle('expanded');
+                this.classList.toggle('expanded');
+
+                // Actualizar el texto del botón
+                const btnText = this.querySelector('.btn-text');
+                if (btnText) {
+                    btnText.textContent = isExpanded ? 'Leer más' : 'Leer menos';
+                }
+                
+                // Asegurarse de que el contenido se expanda completamente después de la animación
+                if (!isExpanded) {
+                    setTimeout(() => {
+                        extraContent.style.maxHeight = 'none';
+                    }, 500);
+                }
             });
-        } else {
-            // Apertura: establecer altura exacta
-            extraContent.style.maxHeight = extraContent.scrollHeight + "px";
-            extraContent.style.opacity = "1";
-            extraContent.style.margin = "1rem 0";
-        }
+        });
+    }
 
-        extraContent.classList.toggle("expanded");
-        readMoreBtn.classList.toggle("expanded");
-        btnText.textContent = isExpanded ? "Leer más" : "Leer menos";
-    });
+    // Función para inicializar los sliders
+    function setupSliders() {
+        document.querySelectorAll('.slider').forEach(slider => {
+            const slides = slider.querySelector('.slides');
+            const slideItems = slider.querySelectorAll('.slide');
+            const prevBtn = slider.querySelector('.prev');
+            const nextBtn = slider.querySelector('.next');
+            const dots = slider.querySelectorAll('.dot');
+            
+            let currentIndex = 0;
+            const totalSlides = slideItems.length;
+            
+            function updateSlider() {
+                slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Actualizar dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+            // Event listeners para botones
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                    updateSlider();
+                });
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                    updateSlider();
+                });
+            }
+            
+            // Event listeners para dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateSlider();
+                });
+            });
+            
+            // Inicializar
+            updateSlider();
+        });
+    }
+
+    // Inicializar todas las funciones
+    setupReadMoreButtons();
+    setupSliders();
 });

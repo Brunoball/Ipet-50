@@ -145,25 +145,33 @@ body {
     max-width: 100%;
 }
 
+/* ===== CONTENT TOGGLE - MEJORADO PARA EXPANSIÓN COMPLETA ===== */
+.content-toggle {
+    position: relative;
+    overflow: hidden;
+}
+
 .extra-content {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
     transition:
-        max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        max-height 0.5s ease-in-out,
         opacity 0.4s ease,
-        padding 0.3s ease;
-    padding: 0 0.5rem;
-    will-change: max-height, opacity, padding;
+        padding 0.3s ease,
+        margin 0.3s ease;
+    padding: 0;
+    will-change: max-height, opacity, padding, margin;
     border-left: 3px solid transparent;
 }
 
 .extra-content.expanded {
-    max-height: 1500px;
+    max-height: 5000px; /* Valor suficientemente grande para contenido largo */
     opacity: 1;
     padding: 1rem 0.5rem;
     margin: 1.5rem 0;
     border-left-color: #3498db;
+    overflow: visible;
 }
 
 .features-list {
@@ -654,26 +662,3 @@ body {
         font-size: 0.8rem;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

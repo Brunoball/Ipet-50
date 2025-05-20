@@ -933,6 +933,8 @@ header {
         width: 14px;
         height: 14px;
     }
+
+
 }
 
 @media (max-width: 480px) {
@@ -1253,6 +1255,15 @@ footer {
     .text-cards {
         grid-template-columns: 1fr;
     }
+
+    .director-card:hover {
+        transform: translateY(0);
+    }
+
+    .text-card:hover {
+        transform: translateY(0);
+    }
+    
 
     .back-to-top {
         right: auto; /* Elimina la posición right */

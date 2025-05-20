@@ -4,203 +4,194 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPET 50 | LENGUA Y LITERATURA</title>
+    <title>IPET 50 | Lengua y Literatura</title>
     <link rel="shortcut icon" href="../img/efologo.png" type="image/x-icon">
-    <link rel="stylesheet" href="lengua.css">
+    <link rel="stylesheet" href="FA_main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@400;600&family=Prociono&display=swap" rel="stylesheet">
     <link href="../fontawesome-free-6.5.1-web/css/all.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Prociono&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <img class="fondo" src="https://www.radioestacion.com.ar/wp-content/uploads/2020/10/ipet-50.jpg" alt="">
+    <header class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <img class="escudo" src="../img/Escudo.png" alt="Escudo IPET 50">
+            <div class="hero-text">
+                <h1>Departamento de <span>Lengua y Literatura</span></h1>
+                <p>COMUNICACIÓN - LECTURA - ESCRITURA</p>
+            </div>
+        </div>
+    </header>
     
-    <div class="contenedor">
-        <div class="box-menu">
-            <div class="menu">
-                <img class="escudo" src="../img/Escudo.png" alt="">
-                <h1 class="tituloprinc">Departamento de Lengua y Literatura</h1>
-            </div>
-        </div>
-
-        <section>
-            <div class="contenedor-sobre-nosotros">
+    <section class="content-section">
+        <div class="main-content">
+            <div class="slider-container slider-common">
                 <div class="slider">
-                    <ul class="slides">
-                        <li class="slide"><img src="/imgnuevas/lengua.jpg"></li>
-                        <li class="slide"><img src="/imgnuevas/lengua2.jpg"></li>
-                        <li class="slide"><img src="/imgnuevas/lengua3.jpg"></li>
-                    </ul>
-                    <div class="prev" onclick="prevSlide()">&#10094;</div>
-                    <div class="next" onclick="nextSlide()">&#10095;</div>
-                    <div class="puntos-container">
-                        <span class="punto" onclick="currentSlide(1)"></span>
-                        <span class="punto" onclick="currentSlide(2)"></span>
-                        <span class="punto" onclick="currentSlide(3)"></span>
+                    <div class="slides">
+                        <div class="slide active"><img src="/imgnuevas/lengua.jpg" alt="Clase de lengua"></div>
+                        <div class="slide"><img src="/imgnuevas/lengua2.jpg" alt="Estudiantes leyendo"></div>
+                        <div class="slide"><img src="/imgnuevas/lengua3.jpg" alt="Taller de escritura"></div>
+                    </div>
+                    <button class="slider-nav prev" aria-label="Imagen anterior">&#10094;</button>
+                    <button class="slider-nav next" aria-label="Imagen siguiente">&#10095;</button>
+                    <div class="slider-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
                     </div>
                 </div>
-
-                <div class="contenido-textos">
-                    <p>
-                        La enseñanza de la Lengua y Literatura en los contextos actuales y sus prácticas discursivas, desde un Perfil de Estudiante reflexivo, interpretativo y cooperativo implica focalizar esfuerzos de transmisión de conocimientos
-                        transformadores en torno a consensos ideológicos culturales respecto del marco curricular del corpus mencionado. La construcción de redes de pautas de trabajo normativo y pedagógico desde el matiz lingüístico <strong>contribuye a construir sobre lo construido</strong>
-                        el compromiso del colectivo docente de área hacia una Alfabetización académica, una lectocomprensión pensada y evocada con prospección a una escritura tecnológica que evidencie el compromiso de adhesión a un paradigma multiculturalista.
-                    </p>
-                </div> 
-                <div class="contenido-textos-2">
-                    <p>
-                        La presente imbricación que se imparte en las prácticas docentes actuales propone la formación de un estudiante democrático munido de signos lingüísticos e íconos paradigmáticos en la presente, posmodernidad y sus cambios vertiginosos.<br>
-                        El diseño cultural de la literatura en torno a las <strong>capacidades</strong> que se espera despertar, fortalecer y cohesionar en nuestros estudiantes posibilita, con innovación continua, la formación de una <strong>biografía escolar literaria</strong> del poder que otorga la literatura junto al disfrute
-                        de la lectura personalizada y colectiva. La reflexión sobre el lenguaje y la reflexión metalingüística fraternizada con la pragmática del uso comunicativo referencian el manejo de tipologías textuales, su correspondencia con la realidad cotidiana del estudiante y su utilidad de aplicación.<br>
-                        La  <strong>acción de textualizar</strong> (cuadros, redes conceptuales, imágenes, etc.) a la que arriba el estudiante le otorga habilidades cognitivas, de razonamiento, de elección de vocablos y su procedencia, en especial, en el orden técnico, matriz de nuestra institución educativa. Los aportes de la Psicología cognitiva
-                        y de la Semiótica en el terreno de la oralidad, la expresividad y sus alcances en la reformulación de mensajes codifican una receptividad e inventiva socializadora que se corresponde específicamente con el área disciplinar. Al planificar las clases de Lengua y literatura atendiendo a la calidad, igualdad educativa
-                        e inclusión, se vincula todo ello al específico propósito de <strong>garantizar saberes con particularidades del contexto local</strong> y criterios priorizantes desde los documentos provinciales y el Ministerio de Educación. Resulta interesante destacar que desde los NAP se retoma con integración progresiva y flexibilidad dentro de cada ciclo los siguientes ejes:
-                    </p>
-                    <ul class="lista-lit">
-                        <li>En relación con la comprensión y la producción oral.</li>
-                        <li>En relación con la lectura y la producción escrita.</li>
-                        <li>En relación con la literatura.</li>
-                        <li>En relación con la reflexión sobre la lengua (sistema, norma y uso) y los textos.</li>
-                    </ul>
-                    <p>
-                        El saber hacer integrado a las prácticas de lectura y otros saberes como conceptos gramaticales y teoría literaria estratifica <strong>ambientes propicios para aprendizajes socioemotivos</strong>, como ser talleres de lectura, escritura y reescritura. Los soportes y canales privilegiados de acercamiento a la pluralidad de voces provenientes de las lenguas,
-                        culturas que se aprenden corporizan trabajos expositivos que impulsan la evolución de los aprendizajes en consonancia con las tecnologías, en sus diversas formas, como posibilidad de tender puentes entre culturas. Como consecuencia, se integra a todo lo manifestado la inclusión de la biblioteca institucional, a través del formato libro a fin de que nuestros
-                        estudiantes programen actividades conjuntas y desarrollen acciones de intercambio bibliográfico, conversatorios, foros, ferias de libros y otras manifestaciones de trabajo cooperativo. Desde esta inserción en el espacio bibliotecario propiamente dicho se cataloga a la misma como una plataforma ideológica y eje transversal de todas las áreas curriculares y de
-                        todos los niveles. Un nuevo hábitat de trabajo y de aprendizaje se va plasmando como una experiencia de sensibilización en el estudiante.<br>
-                        El tratamiento didáctico de la ortografía aplicada propondrá situaciones de enseñanza aprendizaje que se vinculen con la actualización de la RAE y sus nuevas propuestas. El protagonismo que el aspecto interpretativo de las reglas ortográficas desarrolló en los escenarios educativos propone la construcción de enunciados en el discurso escrito plenamente coherentes
-                        que el estudiante absorbe y los incorpora, a la vez, en su cotidianeidad comunicativa.
-                    </p>
-                </div>   
-
-                <div class="contenido-textos-mov">
-                    <p>
-                        La enseñanza de la Lengua y Literatura en los contextos actuales y sus prácticas discursivas, desde un Perfil de Estudiante reflexivo, interpretativo y cooperativo implica focalizar esfuerzos de transmisión de conocimientos
-                        transformadores en torno a consensos ideológicos culturales respecto del marco curricular del corpus mencionado. La construcción de redes de pautas de trabajo normativo y pedagógico desde el matiz lingüístico <strong>contribuye a construir sobre lo construido</strong>
-                        el compromiso del colectivo docente de área hacia una Alfabetización académica, una lectocomprensión pensada y evocada con prospección a una escritura tecnológica que evidencie el compromiso de adhesión a un paradigma multiculturalista.
-                        <p>
-                            La presente imbricación que se imparte en las prácticas docentes actuales propone la formación de un estudiante democrático munido de signos lingüísticos e íconos paradigmáticos en la presente, posmodernidad y sus cambios vertiginosos.<br>
-                            El diseño cultural de la literatura en torno a las <strong>capacidades</strong> que se espera despertar, fortalecer y cohesionar en nuestros estudiantes posibilita, con innovación continua, la formación de una <strong>biografía escolar literaria</strong> del poder que otorga la literatura junto al disfrute
-                            de la lectura personalizada y colectiva. La reflexión sobre el lenguaje y la reflexión metalingüística fraternizada con la pragmática del uso comunicativo referencian el manejo de tipologías textuales, su correspondencia con la realidad cotidiana del estudiante y su utilidad de aplicación.<br>
-                            La  <strong>acción de textualizar</strong> (cuadros, redes conceptuales, imágenes, etc.) a la que arriba el estudiante le otorga habilidades cognitivas, de razonamiento, de elección de vocablos y su procedencia, en especial, en el orden técnico, matriz de nuestra institución educativa. Los aportes de la Psicología cognitiva
-                            y de la Semiótica en el terreno de la oralidad, la expresividad y sus alcances en la reformulación de mensajes codifican una receptividad e inventiva socializadora que se corresponde específicamente con el área disciplinar. Al planificar las clases de Lengua y literatura atendiendo a la calidad, igualdad educativa
-                            e inclusión, se vincula todo ello al específico propósito de <strong>garantizar saberes con particularidades del contexto local</strong> y criterios priorizantes desde los documentos provinciales y el Ministerio de Educación. Resulta interesante destacar que desde los NAP se retoma con integración progresiva y flexibilidad dentro de cada ciclo los siguientes ejes:
-                        </p>
-                        <ul class="lista-lit">
-                            <li>En relación con la comprensión y la producción oral.</li>
-                            <li>En relación con la lectura y la producción escrita.</li>
-                            <li>En relación con la literatura.</li>
-                            <li>En relación con la reflexión sobre la lengua (sistema, norma y uso) y los textos.</li>
-                        </ul>
-                        <p>
-                            El saber hacer integrado a las prácticas de lectura y otros saberes como conceptos gramaticales y teoría literaria estratifica <strong>ambientes propicios para aprendizajes socioemotivos</strong>, como ser talleres de lectura, escritura y reescritura. Los soportes y canales privilegiados de acercamiento a la pluralidad de voces provenientes de las lenguas,
-                            culturas que se aprenden corporizan trabajos expositivos que impulsan la evolución de los aprendizajes en consonancia con las tecnologías, en sus diversas formas, como posibilidad de tender puentes entre culturas. Como consecuencia, se integra a todo lo manifestado la inclusión de la biblioteca institucional, a través del formato libro a fin de que nuestros
-                            estudiantes programen actividades conjuntas y desarrollen acciones de intercambio bibliográfico, conversatorios, foros, ferias de libros y otras manifestaciones de trabajo cooperativo. Desde esta inserción en el espacio bibliotecario propiamente dicho se cataloga a la misma como una plataforma ideológica y eje transversal de todas las áreas curriculares y de
-                            todos los niveles. Un nuevo hábitat de trabajo y de aprendizaje se va plasmando como una experiencia de sensibilización en el estudiante.<br>
-                            El tratamiento didáctico de la ortografía aplicada propondrá situaciones de enseñanza aprendizaje que se vinculen con la actualización de la RAE y sus nuevas propuestas. El protagonismo que el aspecto interpretativo de las reglas ortográficas desarrolló en los escenarios educativos propone la construcción de enunciados en el discurso escrito plenamente coherentes
-                            que el estudiante absorbe y los incorpora, a la vez, en su cotidianeidad comunicativa.
-                        </p>
-                    </p>
-                </div>   
             </div>
-        </section> 
 
-
-
-        <section>
-            <div class="contenedor-sobre-nosotros2">
-                <h2 class="titulodd"><u>DIA DISTINTO</u></h2>
-                <div class="slider2">
-                    <ul class="slides2">
-                        <li class="slide2"><img src="/imgnuevas/lengua4.jpg"></li>
-                        <li class="slide2"><img src="/imgnuevas/lengua6.jpg"></li>
-                        <li class="slide2"><img src="/imgnuevas/lengua5.jpg"></li>
-                        <li class="slide2"><img src="/imgnuevas/lengua7.jpg"></li>
-                        <li class="slide2"><img src="/imgnuevas/lengua8.jpg"></li>
-                    </ul>
-                    <div class="prev" onclick="prevSlide2()">&#10094;</div>
-                    <div class="next" onclick="nextSlide2()">&#10095;</div>
-                    <div class="puntos-container2">
-                        <span class="punto2" onclick="currentSlide2(1)"></span>
-                        <span class="punto2" onclick="currentSlide2(2)"></span>
-                        <span class="punto2" onclick="currentSlide2(3)"></span>
-                        <span class="punto2" onclick="currentSlide2(4)"></span>
-                    </div>
-                </div>
-                
-                <div class="contenido-textos2">
-                    <p> 
-                        
+            <article class="content-article">
+                <h2 class="article-title">Nuestro Enfoque Educativo</h2>
+                <div class="content-toggle">
+                    <p class="article-intro">
+                        La enseñanza de la Lengua y Literatura en los contextos actuales implica formar estudiantes reflexivos, interpretativos y cooperativos, con un compromiso hacia la alfabetización académica y una escritura tecnológica que evidencie adhesión a un paradigma multiculturalista.
                     </p>
+                    
+                    <div class="extra-content">
+                        <h3>Nuestros pilares fundamentales:</h3>
+                        <ul class="features-list">
+                            <li><span class="icon">✓</span> Formación de un estudiante democrático munido de signos lingüísticos e íconos paradigmáticos.</li>
+                            <li><span class="icon">✓</span> Desarrollo de una biografía escolar literaria que combine el poder de la literatura con el disfrute de la lectura.</li>
+                            <li><span class="icon">✓</span> Reflexión sobre el lenguaje y práctica metalingüística integrada con la pragmática comunicativa.</li>
+                            <li><span class="icon">✓</span> Acción de textualizar que desarrolla habilidades cognitivas y de razonamiento.</li>
+                            <li><span class="icon">✓</span> Garantía de saberes con particularidades del contexto local según documentos provinciales.</li>
+                            <li><span class="icon">✓</span> Creación de ambientes propicios para aprendizajes socioemocionales a través de talleres.</li>
+                        </ul>
+                        
+                        <p>
+                            El diseño cultural de la literatura en torno a las capacidades que se espera despertar, fortalecer y cohesionar en nuestros estudiantes posibilita, con innovación continua, la formación de una biografía escolar literaria del poder que otorga la literatura junto al disfrute de la lectura personalizada y colectiva.
+                        </p>
+                        <p>
+                            La reflexión sobre el lenguaje y la reflexión metalingüística fraternizada con la pragmática del uso comunicativo referencian el manejo de tipologías textuales, su correspondencia con la realidad cotidiana del estudiante y su utilidad de aplicación.
+                        </p>
+                        
+                        <h3>Ejes principales según los NAP:</h3>
+                        <ul class="features-list">
+                            <li><span class="icon">•</span> Comprensión y producción oral</li>
+                            <li><span class="icon">•</span> Lectura y producción escrita</li>
+                            <li><span class="icon">•</span> Literatura</li>
+                            <li><span class="icon">•</span> Reflexión sobre la lengua (sistema, norma y uso) y los textos</li>
+                        </ul>
+                    </div>
+            
+                    <button class="read-more-btn">
+                        <span class="btn-text">Ver más detalles</span>
+                        <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
                 </div>
-
-
-                <div class="slider4">
-                    <ul class="slides4">
-                        <li class="slide4"><img src="/imgnuevas/lengua4.jpg"></li>
-                        <li class="slide4"><img src="/imgnuevas/lengua6.jpg"></li>
-                        <li class="slide4"><img src="/imgnuevas/lengua5.jpg"></li>
-                        <li class="slide4"><img src="/imgnuevas/lengua7.jpg"></li>
-                        <li class="slide4"><img src="/imgnuevas/lengua8.jpg"></li>
-                    </ul>
-                    <div class="prev" onclick="prevSlide4()">&#10094;</div>
-                    <div class="next" onclick="nextSlide4()">&#10095;</div>
-                    <div class="puntos-container4">
-                        <span class="punto4" onclick="currentSlide4(1)"></span>
-                        <span class="punto4" onclick="currentSlide4(2)"></span>
-                        <span class="punto4" onclick="currentSlide4(3)"></span>
-                        <span class="punto4" onclick="currentSlide4(4)"></span>
-                        <span class="punto4" onclick="currentSlide4(5)"></span>
+            
+                <div class="highlight-box">
+                    <div class="highlight-badge">Método</div>
+                    <h3 class="highlight-title">Alfabetización Académica</h3>
+                    <p class="highlight-text">
+                        Trabajamos en la construcción de redes de pautas de trabajo normativo y pedagógico desde el matiz lingüístico, contribuyendo a construir sobre lo construido el compromiso hacia una lectocomprensión pensada y evocada con prospección a una escritura tecnológica.
+                    </p>
+                    <div class="highlight-footer">
+                        <span class="tag">Lectura</span>
+                        <span class="tag">Escritura</span>
+                        <span class="tag">Reflexión</span>
                     </div>
                 </div>
-        </section> 
 
-
-
-        <div class="footer">
-            <ul class="footer-list">
-                <li class="list"><a href="../WEB.htm">INICIO</a></li>
-                <li class="list">
-                    <a href="../WEB.htm#especialidades">FORMACIÓN TÉCNICA</a>
-                    <ul class="sublist">
-                        <li><a href="../Especialidades/ELECTRONICA.htm">Electrónica</a></li>
-                        <li><a href="../Especialidades/ELECTRICIDAD.htm">Electricidad</a></li>
-                        <li><a href="../Especialidades/MECANICA.htm">Mecánica</a></li>
-                        <li><a href="../Especialidades/AUTOMOTORES.htm">Automotores</a></li>
-                        <li><a href="../Especialidades/MMO.htm">Mmo</a></li>
-                        <li><a href="../Especialidades/IMM.htm">Imm</a></li>
-                    </ul>
-                </li>
-                <li class="list">
-                    <a href="../WEB.htm#formacion">FORMACIÓN ACADÉMICA</a>
-                    <ul class="sublist2">
-                        <li><a href="../Formacion academica/SOCIALES.htm">Dpto Sociales</a></li>
-                        <li><a href="../Formacion academica/ECONOMIA.htm">Dpto Economía</a></li>
-                        <li><a href="../Formacion academica/NATURALES.htm">Dpto Naturales</a></li>
-                        <li><a href="../Formacion academica/ARTES.htm">Dpto Artística</a></li>
-                        <li><a href="../Formacion academica/MATEMATICA.htm">Dpto Matemáticas</a></li>
-                        <li><a href="../Formacion academica/TECNOLOGIA.htm">Tecnología y Dt</a></li>
-                        <li><a href="../Formacion academica/INGLES.htm">Dpto Ingles</a></li>
-                        <li><a href="../Formacion academica/EDFISICA.htm">Dpto Ed Física</a></li>
-                    </ul>
-                </li>
-                <li class="list"><a href="../WEB.htm#nosotros">INSTITUCIONAL</a></li>
-                <li class="list"><a href="../WEB.htm#footer">CONTACTO</a></li>
-            </ul>
+                <div class="highlight-box">
+                    <div class="highlight-badge">Enfoque</div>
+                    <h3 class="highlight-title">Tecnología y Comunicación</h3>
+                    <p class="highlight-text">
+                        Los soportes y canales tecnológicos permiten el acercamiento a la pluralidad de voces provenientes de las lenguas y culturas, impulsando la evolución de los aprendizajes en consonancia con las tecnologías como puentes entre culturas.
+                    </p>
+                    <div class="highlight-footer">
+                        <span class="tag">TIC</span>
+                        <span class="tag">Multiculturalidad</span>
+                        <span class="tag">Innovación</span>
+                    </div>
+                </div>
+            </article>
         </div>
+    </section>
+
+    <section class="activities-section">
+        <div class="main-content">
+            <h2 class="section-title">Día Distinto: Experiencias Literarias</h2>
+            
+            <div class="slider-container slider-common">
+                <div class="slider">
+                    <div class="slides">
+                        <div class="slide active"><img src="/imgnuevas/lengua4.jpg" alt="Evento literario 1"></div>
+                        <div class="slide"><img src="/imgnuevas/lengua6.jpg" alt="Evento literario 2"></div>
+                        <div class="slide"><img src="/imgnuevas/lengua5.jpg" alt="Evento literario 3"></div>
+                        <div class="slide"><img src="/imgnuevas/lengua7.jpg" alt="Evento literario 4"></div>
+                        <div class="slide"><img src="/imgnuevas/lengua8.jpg" alt="Evento literario 5"></div>
+                    </div>
+                    <button class="slider-nav prev" aria-label="Imagen anterior">&#10094;</button>
+                    <button class="slider-nav next" aria-label="Imagen siguiente">&#10095;</button>
+                    <div class="slider-dots">
+                        <span class="dot active" data-slide="0"></span>
+                        <span class="dot" data-slide="1"></span>
+                        <span class="dot" data-slide="2"></span>
+                        <span class="dot" data-slide="3"></span>
+                        <span class="dot" data-slide="4"></span>
+                    </div>
+                </div>
+            </div>
+
+            <article class="content-article">
+                <h3 class="article-title">Actividades del Departamento</h3>
+                <div class="content-toggle">
+                    <p class="article-intro">
+                        Nuestro departamento organiza diversas actividades que integran la biblioteca institucional como plataforma ideológica y eje transversal de todas las áreas curriculares y niveles.
+                    </p>
+                    
+                    <div class="extra-content">
+                        <p>
+                            El saber hacer integrado a las prácticas de lectura y otros saberes como conceptos gramaticales y teoría literaria estratifica ambientes propicios para aprendizajes socioemocionales, como ser talleres de lectura, escritura y reescritura.
+                        </p>
+                        <p>
+                            A través del formato libro, nuestros estudiantes programan actividades conjuntas y desarrollan acciones de intercambio bibliográfico, conversatorios, foros, ferias de libros y otras manifestaciones de trabajo cooperativo.
+                        </p>
+                        <p>
+                            Desde esta inserción en el espacio bibliotecario propiamente dicho se cataloga a la misma como una plataforma ideológica y eje transversal de todas las áreas curriculares y de todos los niveles. Un nuevo hábitat de trabajo y de aprendizaje se va plasmando como una experiencia de sensibilización en el estudiante.
+                        </p>
+                        <p>
+                            El tratamiento didáctico de la ortografía aplicada propone situaciones de enseñanza aprendizaje que se vinculen con la actualización de la RAE y sus nuevas propuestas. El protagonismo que el aspecto interpretativo de las reglas ortográficas desarrolló en los escenarios educativos propone la construcción de enunciados en el discurso escrito plenamente coherentes que el estudiante absorbe y los incorpora, a la vez, en su cotidianeidad comunicativa.
+                        </p>
+                    </div>
+            
+                    <button class="read-more-btn">
+                        <span class="btn-text">Conocer más actividades</span>
+                        <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer class="page-footer">
+        <nav class="footer-nav">
+            <ul class="nav-list">
+                <li><a href="../index.htm">INICIO</a></li>
+                <li><a href="../index.html">FORMACIÓN TÉCNICA</a></li>
+                <li><a href="../index.html">FORMACIÓN ACADÉMICA</a></li>
+                <li><a href="../index.html">INSTITUCIONAL</a></li>
+                <li><a href="../index.html">CONTACTO</a></li>
+            </ul>
+        </nav>
         
-        
-        
-    </div>
-    <script src="../scripts/sliders.js"></script>
-    <script src="../scripts/movil.js"></script>
-    <script src="../scripts/slider-web.js"></script>
-    <script src="../scripts/slider_simple.js"></script>
+        <div class="footer-info">
+            <p>IPET 50 "Emilio F. Olmos" - Formando profesionales desde 1950</p>
+            <p class="copyright">© 2023 Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script src="../scripts/form_ac_slider.js"></script>
 </body>
 </html>
