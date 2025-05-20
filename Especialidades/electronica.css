@@ -1,19 +1,19 @@
 /* ===== VARIABLES Y ESTILOS BASE ===== */
 :root {
-    /* Colores */
-    --primary-color: #3498db;
-    --secondary-color: #2c3e50;
-    --accent-color: #2980b9;
-    --light-color: #ecf0f1;
-    --dark-color: #2c3e50;
-    --text-color: #333;
-    --text-light: #777;
-    --white: #fff;
-    --gray-light: #f5f5f5;
+    /* Nueva paleta de colores azul/verde */
+    --primary-color: #0066ff;  /* Azul eléctrico */
+    --secondary-color: #00ff88;  /* Verde lima */
+    --accent-color: #00b4ff;  /* Azul claro */
+    --light-color: #f0f8ff;  /* Azul muy claro */
+    --dark-color: #1a1a1a;  /* Negro puro */
+    --text-color: #333333;  /* Gris oscuro para texto */
+    --text-light: #666666;  /* Gris medio */
+    --white: #ffffff;
+    --gray-light: #f5f5f5;  /* Fondo gris claro */
     
     /* Transiciones */
     --transition: all 0.3s ease;
-  }
+}
   
   * {
     margin: 0;
@@ -109,18 +109,44 @@
   }
   
   /* ===== HEADER Y NAVEGACIÓN ===== */
-  header {
-    width: 100%;
-    background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.9) 100%), 
-                url(../img/portada6.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    position: relative;
-    overflow: hidden;
+header {
+  position: relative;
+  overflow: hidden;
     display: flex;
     flex-direction: column;
-  }
+    
+}
+
+.header-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+}
+
+.header-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+}
+
+/* Asegúrate que el contenido tenga z-index mayor para aparecer sobre el fondo */
+nav, .hero {
+    position: relative;
+    z-index: 1;
+}
   
   #menu {
     position: fixed;
@@ -136,9 +162,9 @@
   }
   
   .menu-container {
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 30px;
+    max-width: 1200px;
+    padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -152,10 +178,10 @@
     align-items: center;
   }
   
-  .logo::before {
-    content: "⚡";
-    margin-right: 10px;
-    font-size: 1.8rem;
+  .logo i {
+    font-size: 1.5rem;
+    padding-right: 1rem;
+    color:  var(--primary-color);
   }
   
   .nav-links {
@@ -164,18 +190,18 @@
   }
   
   #menu a {
-    color: #2c3e50;
+    color: var(--dark-color);
     margin: 0 15px;
     font-weight: 500;
     font-size: 1rem;
     transition: var(--transition);
-    padding: 8px 15px;
+    padding: 0 15px;
     border-radius: 8px;
     position: relative;
   }
   
   #menu a:hover {
-    color: #3498db;
+    color: #2c3e50;
   }
   
   #menu a::after {
@@ -186,23 +212,27 @@
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background: #3498db;
+    background: #00b4ff;
     transition: var(--transition);
   }
   
   #menu a:hover::after {
     width: 70%;
   }
-  
+    #menu .logo::after{
+      margin-top: 2.5rem;
+      bottom: auto;
+
+  }
   .contact-btn {
-    background-color: #3498db;
+    background-color: var(--primary-color);
     color: white !important;
     padding: 10px 20px !important;
     margin-left: 10px !important;
   }
   
   .contact-btn:hover {
-    background-color: #2980b9;
+    background-color: var();
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
@@ -224,6 +254,7 @@
     color: #ffffff;
     position: relative;
     z-index: 2;
+    
   }
   
   .hero-content {
@@ -232,7 +263,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding: 20px;
+    padding:1rem 20px 0;
     text-align: center;
     margin: 0 auto;
     max-width: 800px;
@@ -259,7 +290,7 @@
   
   .cta-button {
     display: inline-block;
-    background-color: #3498db;
+    background-color: var(--primary-color);
     color: white;
     padding: 15px 30px;
     border-radius: 50px;
@@ -267,17 +298,17 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: var(--transition);
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(52, 147, 219, 0.509);
   }
   
   .cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
-    background-color: #2980b9;
+    box-shadow:  0 5px 15px rgba(52, 147, 219, 0.833);
+    background-color: var(--primary-color);
   }
   
   .wave-divider {
+    display: none;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -297,10 +328,6 @@
   }
   
   /* ===== SECCIÓN PERFIL DEL EGRESADO ===== */
-  .perfil-section {
-    background-color: var(--white);
-    padding: 30px 0;
-  }
   
   .perfil-content {
     display: flex;
@@ -524,8 +551,8 @@
   }
   
   /* ===== SECCIÓN NUESTRO TRABAJO ===== */
-  .trabajo-section {
-    background-color: var(--gray-light);
+  .trabajo-section,.perfil-section,.evento-section{
+        background-color: var(--gray-light);
     padding: 30px 0;
   }
   
@@ -551,6 +578,7 @@
   }
   
   .trabajo-card .card-icon {
+    padding: 1.5rem;
     position: absolute;
     top: 20px;
     right: 20px;
@@ -827,7 +855,7 @@
     padding: 20px 0;
     width: 100%;
     position: relative;
-    background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.9) 100%), 
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.3) 0%, rgba(26, 26, 26, 0.8) 100%), 
                 url(/imgnuevas/escuela3.jpg);
     background-size: cover;
     background-position: center;
@@ -848,7 +876,7 @@
     position: absolute;
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+    background: linear-gradient(90deg, var(--gray-light), var(--primary-color));
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
@@ -901,11 +929,11 @@
   .testimonio-year {
     position: absolute;
     z-index: 9999999;
-    outline: 2px solid #3498db;
+    outline: 2px solid var(--primary-color);
     top: 20px;
     right: 20px;
     background-color: var(--light-color);
-    color: var(--secondary-color);
+    color: var(--dark-color);
     font-weight: bold;
     padding: 5px 15px;
     border-radius: 20px;
@@ -922,7 +950,6 @@
     position: relative;
     margin: auto;
     padding: 20px;
-    border-left: 3px solid var(--secondary-color);
   }
   
   .testimonio-author {
@@ -973,14 +1000,14 @@
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     border: none;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     font-size: 1.2rem;
     transition: var(--transition);
     z-index: 10;
   }
   
   .slider-nav:hover {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: white;
     transform: translateY(-50%) scale(1.1);
   }
@@ -1011,7 +1038,7 @@
   
   .dot.active {
     outline: 1px solid #ffffff;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     transform: scale(1.2);
   }
   
@@ -1021,6 +1048,10 @@
     color: var(--light-color);
     padding: 60px 0 20px;
     position: relative;
+  }
+  .footer-social-link:hover{
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
   }
   
   .footer-container {
@@ -1114,7 +1145,7 @@
     right: 30px;
     width: 50px;
     height: 50px;
-    background-color: #3498db;
+    background-color: var(--primary-color);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -1134,7 +1165,7 @@
   }
   
   .back-to-top:hover {
-    background-color: #2980b9;
+    background-color: var(--accent-color);
     transform: translateY(-3px);
   }
   #Testimonios{
@@ -1271,7 +1302,7 @@
       height: 3px;
       background: #2c3e50;
       margin: 5px 0;
-      transition: var(--transition);
+      transition: var(--dark-color);
     }
     
     .hamburger.active span:nth-child(1) {
@@ -1292,7 +1323,7 @@
       top: 5.7rem;
       right: -100%;
       width: 100%;
-      background-color: #f5f5f5;
+      background-color: #ffebeb;
       flex-direction: column;
       padding: 2rem 20px 20px;
       z-index: 998;
